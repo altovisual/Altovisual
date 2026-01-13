@@ -1,0 +1,48 @@
+.falling-text-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.falling-text-target {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.falling-word {
+    display: inline-block;
+    white-space: nowrap;
+    color: var(--text-primary);
+    /* Sombra sutil para legibilidad sobre fondo oscuro */
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.highlighted {
+    color: var(--accent-start, #00f2fe);
+    font-weight: 800;
+}
+
+.falling-text-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Soporte para que los spans no se rompan en layouts */
+.falling-text-target span {
+    pointer-events: auto;
+}
