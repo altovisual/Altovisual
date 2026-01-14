@@ -3,23 +3,32 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(12px);
-    z-index: 1000;
+    z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--space-md);
+    overflow-y: auto;
+    /* Permitir scroll si el modal es más alto que el viewport */
 }
 
 .feature-modal {
     width: 100%;
     max-width: 520px;
+    max-height: 90vh;
+    /* Limitar altura para forzar scroll interno si es necesario */
     padding: var(--space-2xl) var(--space-xl) var(--space-xl);
     text-align: left;
     position: relative;
     border-radius: var(--radius-xl);
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(10, 10, 10, 0.85);
+    /* Fondo más opaco para legibilidad */
     border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+    /* Scroll interno */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
 }
 
 .feature-modal__close {
