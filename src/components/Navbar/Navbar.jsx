@@ -25,11 +25,31 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    const handleNavClick = (hash) => {
-        if (isHomePage) {
+    // Manejar el scroll automático si hay un hash en la URL al cargar o cambiar de ruta
+    useEffect(() => {
+        if (location.hash) {
+            const element = document.querySelector(location.hash)
+            if (element) {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                }, 100)
+            }
+        } else if (isHomePage) {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+    }, [location])
+
+    const handleNavClick = (e, link) => {
+        const { href, hash } = link
+        setIsMobileMenuOpen(false)
+
+        if (isHomePage && hash) {
+            e.preventDefault()
             const element = document.querySelector(hash)
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' })
+                // Actualizar la URL sin recargar para mantener consistencia
+                window.history.pushState(null, '', hash)
             }
         }
     }
@@ -40,7 +60,10 @@ export default function Navbar() {
         >
             <div className="navbar__container">
                 {/* Logo */}
-                <Link to="/" className="navbar__logo">
+                <Link to="/" className="navbar__logo" onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}>
                     <img
                         src="/logo.svg"
                         alt="AltoVisual"
@@ -66,15 +89,16 @@ export default function Navbar() {
                                 <a
                                     href={link.hash}
                                     className="navbar__link"
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        handleNavClick(link.hash)
-                                    }}
+                                    onClick={(e) => handleNavClick(e, link)}
                                 >
                                     {link.label}
                                 </a>
                             ) : (
-                                <Link to={link.hash ? `${link.href}${link.hash}` : link.href} className="navbar__link">
+                                <Link
+                                    to={link.hash ? `${link.href}${link.hash}` : link.href}
+                                    className="navbar__link"
+                                    onClick={(e) => handleNavClick(e, link)}
+                                >
                                     {link.label}
                                 </Link>
                             )}
@@ -83,26 +107,15 @@ export default function Navbar() {
                 </ul>
 
                 {/* CTA Button */}
-                {isHomePage ? (
+                <Link to="/#cotizar" onClick={(e) => handleNavClick(e, { href: '/', hash: '#cotizar' })}>
                     <motion.div
                         className="navbar__cta btn btn-primary"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => handleNavClick('#cotizar')}
                     >
                         Empezar Proyecto
                     </motion.div>
-                ) : (
-                    <Link to="/#cotizar">
-                        <motion.div
-                            className="navbar__cta btn btn-primary"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Empezar Proyecto
-                        </motion.div>
-                    </Link>
-                )}
+                </Link>
 
                 {/* Mobile Menu Toggle */}
                 <button
@@ -133,11 +146,7 @@ export default function Navbar() {
                                         <a
                                             href={link.hash}
                                             className="navbar__mobile-link"
-                                            onClick={(e) => {
-                                                e.preventDefault()
-                                                handleNavClick(link.hash)
-                                                setIsMobileMenuOpen(false)
-                                            }}
+                                            onClick={(e) => handleNavClick(e, link)}
                                         >
                                             {link.label}
                                         </a>
@@ -145,7 +154,7 @@ export default function Navbar() {
                                         <Link
                                             to={link.hash ? `${link.href}${link.hash}` : link.href}
                                             className="navbar__mobile-link"
-                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            onClick={(e) => handleNavClick(e, link)}
                                         >
                                             {link.label}
                                         </Link>

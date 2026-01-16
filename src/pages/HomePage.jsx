@@ -62,6 +62,15 @@ export default function HomePage() {
                                 AltoVisual
                             </GradientText>
                         </h2>
+                        <p style={{
+                            color: 'var(--text-secondary)',
+                            maxWidth: '600px',
+                            margin: 'var(--space-md) auto 0',
+                            fontSize: 'var(--text-lg)',
+                            lineHeight: '1.6'
+                        }}>
+                            Un equipo multidisciplinario de expertos apasionados por fusionar creatividad y tecnología para escalar tu visión al siguiente nivel.
+                        </p>
                     </div>
                     <ChromaGrid items={teamMembers} columns={3} rows={1} radius={400} />
                 </div>

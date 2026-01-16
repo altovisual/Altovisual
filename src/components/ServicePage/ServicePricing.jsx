@@ -42,7 +42,20 @@ export default function ServicePricing({ title, subtitle, plans = [], accentColo
                                             </li>
                                         ))}
                                     </ul>
-                                    <button className="btn btn-primary pricing-card__cta">
+                                    <button
+                                        className="btn btn-primary pricing-card__cta"
+                                        onClick={() => {
+                                            if (plan.whatsappMessage) {
+                                                const encoded = encodeURIComponent(plan.whatsappMessage)
+                                                window.open(`https://wa.me/5491155262024?text=${encoded}`, '_blank')
+                                            } else {
+                                                const element = document.querySelector('#cotizar')
+                                                if (element) {
+                                                    element.scrollIntoView({ behavior: 'smooth' })
+                                                }
+                                            }
+                                        }}
+                                    >
                                         {plan.cta || 'Seleccionar'}
                                     </button>
                                 </div>

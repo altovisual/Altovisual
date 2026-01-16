@@ -7,6 +7,7 @@ import DesignPage from './pages/DesignPage'
 import WebPage from './pages/WebPage'
 import SoftwarePage from './pages/SoftwarePage'
 import VfxPage from './pages/VfxPage'
+import AIAutomationPage from './pages/AIAutomationPage'
 import PortfolioPage from './pages/PortfolioPage'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -87,6 +88,14 @@ function AppRoutes() {
                         element={
                             <PageWrapper>
                                 <VfxPage />
+                            </PageWrapper>
+                        }
+                    />
+                    <Route
+                        path="/servicios/ia-automatizacion"
+                        element={
+                            <PageWrapper>
+                                <AIAutomationPage />
                             </PageWrapper>
                         }
                     />

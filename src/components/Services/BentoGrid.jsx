@@ -39,7 +39,7 @@ const services = [
     {
         id: 'software',
         title: 'Software',
-        description: 'Soluciones a medida: SaaS, paneles administrativos y automatizaciones.',
+        description: 'Soluciones a medida: SaaS, paneles administrativos y aplicaciones robustas.',
         icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <polyline points="16,18 22,12 16,6" />
@@ -51,6 +51,21 @@ const services = [
         accent: '#a855f7',
         size: 'medium',
         path: '/servicios/software'
+    },
+    {
+        id: 'ai',
+        title: 'IA & Automatización',
+        description: 'Chatbots inteligentes y flujos de trabajo automatizados para escalar tu negocio.',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+                <path d="M12 6a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4z" />
+            </svg>
+        ),
+        features: ['Agentes IA', 'n8n Workflows', 'Chatbots', 'Automatización'],
+        accent: '#ec4899',
+        size: 'large',
+        path: '/servicios/ia-automatizacion'
     },
     {
         id: 'vfx',

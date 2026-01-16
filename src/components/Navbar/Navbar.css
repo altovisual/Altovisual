@@ -37,7 +37,7 @@
 }
 
 .navbar__logo img {
-    height: 40px;
+    height: 26px;
     width: auto;
     filter: invert(1) brightness(2);
 }
@@ -87,8 +87,9 @@
 
 /* CTA Button */
 .navbar__cta {
-    padding: var(--space-sm) var(--space-md);
-    font-size: var(--text-sm);
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    border-radius: var(--radius-sm);
 }
 
 /* Mobile Toggle */
@@ -180,7 +181,7 @@
     }
 
     .navbar__logo img {
-        height: 36px;
+        height: 24px;
     }
 }
 
@@ -190,7 +191,7 @@
     }
 
     .navbar__logo img {
-        height: 32px;
+        height: 22px;
     }
 
     .navbar__mobile-links {

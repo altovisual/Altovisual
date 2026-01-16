@@ -39,12 +39,15 @@ export default function QuoteModal({ isOpen, onClose, summary }) {
     }
 
     const handleWhatsApp = () => {
+        const isVariable = summary.total === 'A convenir'
+        const priceDisplay = isVariable ? 'A convenir (Consultar)' : `$${summary.total}`
+
         const message = `¡Hola AltoVisual! 👋 Acabo de calcular un presupuesto en su sitio web:
         
 🚀 *Servicio:* ${summary.service}
 📊 *Complejidad:* ${summary.complexity}
 ⏰ *Entrega:* ${summary.urgency}
-💰 *Inversión Estimada:* $${summary.total}
+💰 *Inversión Estimada:* ${priceDisplay}
 
 Me gustaría conversar sobre este proyecto.`
 
@@ -97,7 +100,9 @@ Me gustaría conversar sobre este proyecto.`
                             </div>
                             <div className="quote-modal__summary-item">
                                 <span className="label">Presupuesto Estimado</span>
-                                <span className="value highlighting">${summary.total}+</span>
+                                <span className="value highlighting">
+                                    {summary.total === 'A convenir' ? 'A convenir' : `$${summary.total}+`}
+                                </span>
                             </div>
                         </div>
 

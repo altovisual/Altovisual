@@ -172,7 +172,8 @@ const pricingPlans = [
             'Responsive design',
             '1 revisión incluida'
         ],
-        cta: 'Comenzar'
+        cta: 'Comenzar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Landing Page* ($800) para mi próximo proyecto web.'
     },
     {
         name: 'Sitio Web Pro',
@@ -187,7 +188,8 @@ const pricingPlans = [
             'Analytics configurado',
             'Soporte 3 meses'
         ],
-        cta: 'Más Popular'
+        cta: 'Más Popular',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Sitio Web Pro* ($2,500) para una presencia digital completa.'
     },
     {
         name: 'E-commerce',
@@ -201,7 +203,8 @@ const pricingPlans = [
             'Integraciones API',
             'Soporte 6 meses'
         ],
-        cta: 'Cotizar'
+        cta: 'Cotizar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Necesito información sobre el plan *E-commerce* ($4,500) para mi tienda online.'
     }
 ]
 

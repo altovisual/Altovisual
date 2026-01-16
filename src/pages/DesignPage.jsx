@@ -171,7 +171,8 @@ const pricingPlans = [
             'Paleta de colores',
             'Entrega en 5 días'
         ],
-        cta: 'Comenzar'
+        cta: 'Comenzar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Logo Básico* ($300) para mi marca.'
     },
     {
         name: 'Branding Pro',
@@ -186,7 +187,8 @@ const pricingPlans = [
             'Papelería básica',
             'Revisiones ilimitadas'
         ],
-        cta: 'Más Popular'
+        cta: 'Más Popular',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Branding Pro* ($1,200) para una identidad de marca completa.'
     },
     {
         name: 'Brand Integral',
@@ -200,7 +202,8 @@ const pricingPlans = [
             'Material impreso',
             'Consultoría incluida'
         ],
-        cta: 'Cotizar'
+        cta: 'Cotizar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Brand Integral* ($2,800) con todos los servicios de diseño.'
     }
 ]
 

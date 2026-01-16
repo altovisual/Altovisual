@@ -172,7 +172,8 @@ const pricingPlans = [
             '1 integración externa',
             'Deploy en cloud'
         ],
-        cta: 'Comenzar'
+        cta: 'Comenzar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa desarrollar mi idea con el plan *MVP Starter* ($5,000).'
     },
     {
         name: 'SaaS Pro',
@@ -187,7 +188,8 @@ const pricingPlans = [
             'Testing automatizado',
             'Soporte 6 meses'
         ],
-        cta: 'Más Popular'
+        cta: 'Más Popular',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero escalar mi plataforma con el plan *SaaS Pro* ($15,000).'
     },
     {
         name: 'Enterprise',
@@ -201,7 +203,8 @@ const pricingPlans = [
             'SLA garantizado',
             'Equipo dedicado'
         ],
-        cta: 'Contactar'
+        cta: 'Contactar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Necesito una solución a medida para mi empresa (*Enterprise*). Me gustaría conversar.'
     }
 ]
 

@@ -177,7 +177,8 @@ const pricingPlans = [
             '2 revisiones',
             'Entrega en 5 días'
         ],
-        cta: 'Comenzar'
+        cta: 'Comenzar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Video Básico* ($500) para editar mis videos.'
     },
     {
         name: 'Motion Pro',
@@ -192,7 +193,8 @@ const pricingPlans = [
             '3 revisiones',
             'Archivos fuente incluidos'
         ],
-        cta: 'Más Popular'
+        cta: 'Más Popular',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero información sobre el plan *Motion Pro* ($1,500) para animaciones de impacto.'
     },
     {
         name: 'VFX Premium',
@@ -206,7 +208,8 @@ const pricingPlans = [
             'Revisiones ilimitadas',
             'Soporte post-entrega'
         ],
-        cta: 'Cotizar'
+        cta: 'Cotizar',
+        whatsappMessage: '¡Hola AltoVisual! 👋 Necesito una cotización para el plan *VFX Premium* ($3,500) para un proyecto de alta gama.'
     }
 ]
 
