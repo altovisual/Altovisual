@@ -80,28 +80,6 @@
     height: 20px;
 }
 
-/* Scroll Indicator */
-.hero__scroll-indicator {
-    position: absolute;
-    bottom: var(--space-md);
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-    color: var(--text-muted);
-    font-size: var(--text-xs);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-.hero__scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--accent-start), transparent);
-}
-
 /* Floating Elements */
 .hero__floating-elements {
     position: absolute;
@@ -136,7 +114,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .hero__content {
-        padding: calc(var(--space-2xl) + 60px) var(--space-md) var(--space-xl);
+        padding: var(--space-2xl) var(--space-md) 120px;
     }
 
     .hero__description {

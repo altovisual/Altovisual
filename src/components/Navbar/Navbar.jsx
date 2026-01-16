@@ -6,8 +6,8 @@ import './Navbar.css'
 const navLinks = [
     { href: '/', hash: '#inicio', label: 'Inicio' },
     { href: '/', hash: '#servicios', label: 'Servicios' },
+    { href: '/', hash: '#portafolio', label: 'Portafolio' },
     { href: '/', hash: '#cotizar', label: 'Cotizar' },
-    { href: '/portafolio', hash: '', label: 'Portafolio' },
     { href: '/', hash: '#contacto', label: 'Contacto' },
 ]
 
@@ -30,28 +30,65 @@ export default function Navbar() {
         if (location.hash) {
             const element = document.querySelector(location.hash)
             if (element) {
-                setTimeout(() => {
+                // Pequeño delay para asegurar que el DOM esté listo
+                const timeoutId = setTimeout(() => {
                     element.scrollIntoView({ behavior: 'smooth' })
                 }, 100)
+                return () => clearTimeout(timeoutId)
             }
-        } else if (isHomePage) {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
+        } else if (isHomePage && location.pathname === '/') {
+            // Solo si estamos literalmente en la raíz sin hash
+            // window.scrollTo({ top: 0, behavior: 'smooth' })
         }
-    }, [location])
+    }, [location, isHomePage])
 
     const handleNavClick = (e, link) => {
-        const { href, hash } = link
+        const { hash } = link
         setIsMobileMenuOpen(false)
 
         if (isHomePage && hash) {
             e.preventDefault()
-            const element = document.querySelector(hash)
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' })
-                // Actualizar la URL sin recargar para mantener consistencia
-                window.history.pushState(null, '', hash)
+            if (hash === '#inicio') {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                window.history.pushState(null, '', '/')
+            } else {
+                const element = document.querySelector(hash)
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                    window.history.pushState(null, '', hash)
+                }
             }
         }
+    }
+
+    const mobileMenuVariants = {
+        closed: {
+            opacity: 0,
+            height: 0,
+            transition: {
+                duration: 0.3,
+                ease: "easeInOut",
+                when: "afterChildren",
+                staggerChildren: 0.05,
+                staggerDirection: -1
+            }
+        },
+        open: {
+            opacity: 1,
+            height: 'auto',
+            transition: {
+                duration: 0.4,
+                ease: "easeOut",
+                when: "beforeChildren",
+                staggerChildren: 0.1,
+                delayChildren: 0.1
+            }
+        }
+    }
+
+    const itemVariants = {
+        closed: { opacity: 0, x: -10 },
+        open: { opacity: 1, x: 0 }
     }
 
     return (
@@ -60,9 +97,13 @@ export default function Navbar() {
         >
             <div className="navbar__container">
                 {/* Logo */}
-                <Link to="/" className="navbar__logo" onClick={() => {
+                <Link to="/" className="navbar__logo" onClick={(e) => {
                     setIsMobileMenuOpen(false)
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                    if (isHomePage) {
+                        e.preventDefault()
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                        window.history.pushState(null, '', '/')
+                    }
                 }}>
                     <img
                         src="/logo.svg"
@@ -130,18 +171,18 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu */}
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {isMobileMenuOpen && (
                     <motion.div
                         className="navbar__mobile-menu"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+                        variants={mobileMenuVariants}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
                     >
                         <ul className="navbar__mobile-links">
                             {navLinks.map((link) => (
-                                <li key={link.label}>
+                                <motion.li key={link.label} variants={itemVariants}>
                                     {isHomePage && link.hash ? (
                                         <a
                                             href={link.hash}
@@ -159,7 +200,7 @@ export default function Navbar() {
                                             {link.label}
                                         </Link>
                                     )}
-                                </li>
+                                </motion.li>
                             ))}
                         </ul>
                     </motion.div>
