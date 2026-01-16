@@ -7,7 +7,7 @@ const navLinks = [
     { href: '/', hash: '#inicio', label: 'Inicio' },
     { href: '/', hash: '#servicios', label: 'Servicios' },
     { href: '/', hash: '#cotizar', label: 'Cotizar' },
-    { href: '/', hash: '#portafolio', label: 'Portafolio' },
+    { href: '/portafolio', hash: '', label: 'Portafolio' },
     { href: '/', hash: '#contacto', label: 'Contacto' },
 ]
 
@@ -57,12 +57,12 @@ export default function Navbar() {
                 <ul className="navbar__links">
                     {navLinks.map((link, index) => (
                         <motion.li
-                            key={link.hash}
+                            key={link.label}
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            {isHomePage ? (
+                            {isHomePage && link.hash ? (
                                 <a
                                     href={link.hash}
                                     className="navbar__link"
@@ -74,7 +74,7 @@ export default function Navbar() {
                                     {link.label}
                                 </a>
                             ) : (
-                                <Link to={`/${link.hash}`} className="navbar__link">
+                                <Link to={link.hash ? `${link.href}${link.hash}` : link.href} className="navbar__link">
                                     {link.label}
                                 </Link>
                             )}
@@ -128,8 +128,8 @@ export default function Navbar() {
                     >
                         <ul className="navbar__mobile-links">
                             {navLinks.map((link) => (
-                                <li key={link.hash}>
-                                    {isHomePage ? (
+                                <li key={link.label}>
+                                    {isHomePage && link.hash ? (
                                         <a
                                             href={link.hash}
                                             className="navbar__mobile-link"
@@ -143,7 +143,7 @@ export default function Navbar() {
                                         </a>
                                     ) : (
                                         <Link
-                                            to={`/${link.hash}`}
+                                            to={link.hash ? `${link.href}${link.hash}` : link.href}
                                             className="navbar__mobile-link"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >

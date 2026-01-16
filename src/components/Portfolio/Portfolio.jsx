@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import StarBorder from '../Common/StarBorder'
 import './Portfolio.css'
 
 const categories = ['Todos', 'Diseño', 'Web', 'Software', 'VFX']
@@ -96,6 +97,33 @@ export default function Portfolio() {
     const [filteredProjects, setFilteredProjects] = useState(projects)
     const [selectedProject, setSelectedProject] = useState(null)
 
+    // 3D Tilt Logic
+    const modalRef = useRef(null)
+    const x = useMotionValue(0)
+    const y = useMotionValue(0)
+    const mouseXSpring = useSpring(x)
+    const mouseYSpring = useSpring(y)
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"])
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"])
+
+    const handleMouseMove = (e) => {
+        if (!modalRef.current) return
+        const rect = modalRef.current.getBoundingClientRect()
+        const width = rect.width
+        const height = rect.height
+        const mouseX = e.clientX - rect.left
+        const mouseY = e.clientY - rect.top
+        const xPct = mouseX / width - 0.5
+        const yPct = mouseY / height - 0.5
+        x.set(xPct)
+        y.set(yPct)
+    }
+
+    const handleMouseLeave = () => {
+        x.set(0)
+        y.set(0)
+    }
+
     useEffect(() => {
         if (filter === 'Todos') {
             setFilteredProjects(projects)
@@ -152,25 +180,61 @@ export default function Portfolio() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setSelectedProject(null)}
+                        style={{ perspective: 1000 }}
                     >
                         <motion.div
+                            ref={modalRef}
                             className="portfolio__modal glass"
-                            initial={{ y: 50, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: 50, opacity: 0 }}
+                            initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 30 }}
+                            onMouseMove={handleMouseMove}
+                            onMouseLeave={handleMouseLeave}
+                            style={{
+                                rotateX,
+                                rotateY,
+                                transformStyle: "preserve-3d",
+                                '--accent': '#00f2fe'
+                            }}
                             onClick={e => e.stopPropagation()}
                         >
                             <button className="portfolio__modal-close" onClick={() => setSelectedProject(null)}>×</button>
-                            <img src={selectedProject.image} alt={selectedProject.title} className="portfolio__modal-image" />
-                            <div className="portfolio__modal-content">
-                                <span className="portfolio__modal-category">{selectedProject.category}</span>
-                                <h3 className="portfolio__modal-title">{selectedProject.title}</h3>
-                                <p className="portfolio__modal-description">{selectedProject.description}</p>
-                                <div className="portfolio__modal-tags">
-                                    {selectedProject.tags.map(tag => (
-                                        <span key={tag} className="portfolio__card-tag">{tag}</span>
-                                    ))}
+
+                            <div className="portfolio__modal-header">
+                                <div className="portfolio__modal-image-container">
+                                    <img src={selectedProject.image} alt={selectedProject.title} className="portfolio__modal-image" />
                                 </div>
+                                <div className="portfolio__modal-info">
+                                    <span className="portfolio__modal-category">{selectedProject.category}</span>
+                                    <h3 className="portfolio__modal-title">{selectedProject.title}</h3>
+                                </div>
+                            </div>
+
+                            <div className="portfolio__modal-content">
+                                <div className="portfolio__modal-description">
+                                    <h3>Descripción del Proyecto</h3>
+                                    <p>{selectedProject.description}</p>
+                                </div>
+                                <div className="portfolio__modal-tags-container">
+                                    <h3>Tecnologías & Tags</h3>
+                                    <div className="portfolio__modal-tags">
+                                        {selectedProject.tags.map(tag => (
+                                            <span key={tag} className="portfolio__card-tag">{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="portfolio__modal-actions">
+                                <StarBorder
+                                    as="button"
+                                    color="#00f2fe"
+                                    speed="4s"
+                                    onClick={() => setSelectedProject(null)}
+                                    className="portfolio__modal-cta"
+                                >
+                                    Cerrar Detalle
+                                </StarBorder>
                             </div>
                         </motion.div>
                     </motion.div>

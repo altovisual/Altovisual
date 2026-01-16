@@ -2,6 +2,11 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import LiquidEther from '../Backgrounds/LiquidEther'
 import GradientText from '../Common/GradientText'
+import LogoLoop from '../Common/LogoLoop'
+import {
+    SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiThreedotjs,
+    SiAdobephotoshop, SiAdobeillustrator, SiAdobeaftereffects, SiDavinciresolve, SiUnrealengine, SiBlender
+} from 'react-icons/si'
 import './Hero.css'
 
 export default function Hero() {
@@ -14,6 +19,21 @@ export default function Hero() {
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
     const y = useTransform(scrollYProgress, [0, 0.5], [0, 100])
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+
+    const techLogos = [
+        { node: <SiReact />, title: "React", href: "https://react.dev" },
+        { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+        { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+        { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+        { node: <SiFramer />, title: "Framer Motion", href: "https://www.framer.com/motion/" },
+        { node: <SiThreedotjs />, title: "Three.js", href: "https://threejs.org" },
+        { node: <SiAdobephotoshop />, title: "Photoshop", href: "https://www.adobe.com/products/photoshop.html" },
+        { node: <SiAdobeillustrator />, title: "Illustrator", href: "https://www.adobe.com/products/illustrator.html" },
+        { node: <SiAdobeaftereffects />, title: "After Effects", href: "https://www.adobe.com/products/aftereffects.html" },
+        { node: <SiDavinciresolve />, title: "DaVinci Resolve", href: "https://www.blackmagicdesign.com/products/davinciresolve" },
+        { node: <SiUnrealengine />, title: "Unreal Engine", href: "https://www.unrealengine.com" },
+        { node: <SiBlender />, title: "Blender", href: "https://www.blender.org" },
+    ];
 
     return (
         <section id="inicio" ref={containerRef} className="hero">
@@ -124,6 +144,32 @@ export default function Hero() {
                     transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
                 />
             </div>
+
+            {/* Logo Loop Section */}
+            <motion.div
+                className="hero__logos"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 1.5 }}
+                style={{
+                    position: 'absolute',
+                    bottom: '2rem',
+                    left: 0,
+                    right: 0,
+                    zIndex: 2
+                }}
+            >
+                <LogoLoop
+                    logos={techLogos}
+                    speed={40}
+                    gap={80}
+                    logoHeight={40}
+                    direction="right"
+                    fadeOut={true}
+                    fadeOutColor="var(--bg-primary)"
+                    pauseOnHover={true}
+                />
+            </motion.div>
         </section>
     )
 }
