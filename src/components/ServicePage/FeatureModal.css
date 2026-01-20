@@ -129,14 +129,29 @@
 .feature-modal__actions {
     display: flex;
     justify-content: center;
+    margin-top: var(--space-lg);
 }
 
-.feature-modal__cta .inner-content {
+.feature-modal__cta--primary {
+    min-width: 280px;
+}
+
+.feature-modal__cta--primary .inner-content {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.1);
     font-size: var(--text-sm);
     font-weight: 600;
     padding: 12px 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .feature-modal__cta--primary {
+        width: 100%;
+        min-width: unset;
+    }
 }
 
 @media (max-width: 520px) {

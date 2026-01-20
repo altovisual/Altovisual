@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import StarBorder from '../Common/StarBorder'
 import './FeatureModal.css'
@@ -106,10 +107,15 @@ export default function FeatureModal({ isOpen, onClose, feature, accentColor = '
                                 as="button"
                                 color={accentColor}
                                 speed="4s"
-                                onClick={onClose}
-                                className="feature-modal__cta"
+                                className="feature-modal__cta feature-modal__cta--primary"
+                                onClick={() => {
+                                    const message = `¡Hola AltoVisual! 👋 Me interesa la solución de *${feature.title}* que vi en la web.`
+                                    const encoded = encodeURIComponent(message)
+                                    window.open(`https://wa.me/5491155262024?text=${encoded}`, '_blank')
+                                    onClose()
+                                }}
                             >
-                                Entendido
+                                Quiero esta Solución
                             </StarBorder>
                         </div>
                     </motion.div>
