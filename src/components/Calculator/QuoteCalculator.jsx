@@ -140,35 +140,148 @@ const complexities = [
 ]
 
 const serviceFeatures = {
-    design: {
-        simple: ['Identidad Visual Core', 'Paleta y Tipografía', '1 Propuesta de Logo', '2 Revisiones'],
-        medium: ['Manual de Marca Pro', 'Assets Redes Sociales', '3 Propuestas de Logo', '5 Revisiones'],
-        advanced: ['Sistema Visual Completo', 'Brand Guidelines Full', 'Ilustraciones Custom', 'Revisiones Ilimitadas'],
-        enterprise: ['Estrategia de Marca', 'Motion Branding', 'Consultoría Continua', 'Soporte VIP']
+    // Diseño Gráfico
+    brand: {
+        simple: ['Logotipo Core', 'Paleta de Colores', 'Tipografía Principal', '2 Revisiones'],
+        medium: ['Manual de Marca Pro', 'Papelería Básica', 'Assets Redes Sociales', '5 Revisiones'],
+        advanced: ['Sistema Visual Full', 'Estrategia de Marca', 'Ilustraciones Custom', 'Revisiones Ilimitadas'],
+        enterprise: ['Brand Experience System', 'Motion Branding', 'Consultoría Senior', 'Soporte VIP']
     },
-    web: {
-        simple: ['Landing Page / One-Page', 'Diseño Responsivo', 'SEO On-page Básico', 'Formulario Contacto'],
-        medium: ['Sitio Multi-página', 'Gestor de Contenidos (CMS)', 'Optimización de Velocidad', 'Google Analytics'],
-        advanced: ['E-commerce / Web App', 'Pasarela de Pagos', 'Animaciones Premium', 'Seguridad Avanzada'],
-        enterprise: ['Desarrollo Full-Custom', 'Escalabilidad Cloud', 'Soporte y Mantenimiento', 'Auditoría SEO Pro']
+    uiux: {
+        simple: ['Wireframes Low-Fi', 'Prototipo Estático', 'UI Kit Básico', '2 Rondas de Feedback'],
+        medium: ['Prototipo Interactivo', 'Diseño Responsive Pro', 'Sistema de Diseño', 'Pruebas de Usuario'],
+        advanced: ['Producto Web/Mobile Full', 'Micro-interacciones', 'Audit de Usabilidad', 'Soporte Dev Handover'],
+        enterprise: ['Design System Escalable', 'UX Research Profundo', 'Estrategia de Producto', 'Mantenimiento Mensual']
     },
-    software: {
-        simple: ['MVP Funcional', 'Base de Datos Core', 'Login Estándar', 'UI Limpia'],
-        medium: ['API REST / Roles', 'Integraciones Básicas', 'Reportes Estándar', 'Soporte 1 Mes'],
-        advanced: ['Arquitectura Modular', 'Dashboards Complejos', 'Real-time Data', 'Multilenguaje'],
-        enterprise: ['Sistemas de Misión Crítica', 'Escalabilidad Masiva', 'DevOps / CI-CD', 'Alta Disponibilidad']
+    print: {
+        simple: ['Diseño de Tarjetas', 'Flyer Estándar', 'Formato para Impresión', '1 Revisión'],
+        medium: ['Brochure Corporativo', 'Packaging Básico', 'Señalética', '3 Revisiones'],
+        advanced: ['Catálogo Completo', 'Stand para Eventos', 'Troquelados Especiales', 'Gestión con Imprenta'],
+        enterprise: ['Branding Editorial Full', 'Packaging Premium', 'Campañas OOH', 'Control de Calidad']
     },
-    vfx: {
-        simple: ['Edición Lineal', 'Música de Stock', 'Color Básico', 'Calidad Full HD'],
-        medium: ['Motion Graphics', 'Sound Design Pro', 'Color Grading', '4K Rendering'],
-        advanced: ['Efectos Visuales (VFX)', 'Animación 3D', 'Masterización Pro', 'Formatos Cine'],
-        enterprise: ['Producción Cinematográfica', 'VFX de Alto Nivel', 'CGI Avanzado', 'Derechos Comerciales']
+    digital: {
+        simple: ['Banners Estáticos', 'Post para Feed', 'Optimización Web', 'Kits de Tamaño'],
+        medium: ['Animaciones para RRSS', 'Diseño de Newsletter', 'Ads para Campañas', 'Filtros Básicos'],
+        advanced: ['Contenido Dinámico', 'Campaña Multimedia', 'Interactive Ads', 'Asset Management'],
+        enterprise: ['Content Strategy IA', 'Video Marketing', 'Automatización Ads', 'Performance Design']
     },
-    ia: {
-        simple: ['Chatbot Estándar', 'Reglas de Respuesta', 'Integración Web', '1 Flujo de Trabajo'],
-        medium: ['IA Generativa', 'Procesamiento NLU', 'Automatización CRM', '5 Flujos de Trabajo'],
-        advanced: ['Agentes Autónomos', 'Entrenamiento Custom', 'Integración API Pro', 'Análisis Predictivo'],
-        enterprise: ['Sistemas RAG / Knowledge Base', 'IA de Voz Realística', 'Infraestructura Propia', 'Estrategia Corporativa']
+    guidelines: {
+        simple: ['Manual de Uso Logo', 'Grilla Constructiva', 'Reglas de Aplicación', 'PDF Digital'],
+        medium: ['Guía de Estilo Full', 'Tono de Voz', 'Iconografía Custom', 'Assets Listos'],
+        advanced: ['Brand Center Web', 'Patterns y Texturas', 'Guía de Componentes', 'Actualizaciones'],
+        enterprise: ['Ecosistema de Marca', 'Estrategia de Activos', 'Training de Equipo', 'Cloud Guidelines']
+    },
+    consulting: {
+        simple: ['Auditoría de Logo', 'Checklist Visual', 'Reporte de Errores', 'Recomendaciones'],
+        medium: ['Análisis de Competencia', 'Estrategia de Imagen', 'Workshop de Marca', 'Roadmap de Mejora'],
+        advanced: ['Rebranding Strategy', 'Posicionamiento Visual', 'Dirección de Arte', 'Consultoría 3 meses'],
+        enterprise: ['CMO as a Service', 'Gestión de Identidad', 'Expansión de Marca', 'Partner Estratégico']
+    },
+
+    // Desarrollo Web
+    landing: {
+        simple: ['Landing One-Page', 'Copywriting Básico', 'Formulario Directo', 'Diseño Mobile-First'],
+        medium: ['A/B Testing Básico', 'SEO Local Optimizado', 'Lead Magnets', 'Animaciones de Entrada'],
+        advanced: ['Funnel de Ventas Full', 'Carga Ultra-Rápida', 'Integración CRM', 'Analytics Avanzado'],
+        enterprise: ['Estrategia de Conversión', 'Páginas Dinámicas', 'Soporte 24/7', 'Escalabilidad']
+    },
+    ecommerce: {
+        simple: ['Tienda hasta 20 items', 'Carrito Estándar', 'Checkout Seguro', 'Panel de Control'],
+        medium: ['Gestión de Stock Pro', 'Múltiples Pasarelas', 'Reviews de Clientes', 'Cupones y Descuentos'],
+        advanced: ['Suscripciones/Membresías', 'Dropshipping Tools', 'UX de Compra Pro', 'Marketing Automation'],
+        enterprise: ['Marketplace Multi-vendor', 'ERP Integration', 'Omnicanalidad', 'Soporte Enterprise']
+    },
+    'web-app': {
+        simple: ['Funciones CRUD', 'Autenticación Básica', 'Dashboard Simple', 'Stack Moderno'],
+        medium: ['Roles de Usuario', 'Filtros Avanzados', 'Notificaciones Email', 'API Integrada'],
+        advanced: ['Real-time Updates', 'Procesamiento Pesado', 'App Offline-ready', 'Arquitectura Cloud'],
+        enterprise: ['SaaS Multi-tenant', 'Infraestructura Auto-scale', 'Security Audit', 'Partner Dev']
+    },
+    cms: {
+        simple: ['Personalización Temas', 'Editor de Contenido', 'Gestión de Media', 'SEO Plugin'],
+        medium: ['Campos Personalizados', 'Workflows de Review', 'Multi-idioma Básico', 'Optimización Auto'],
+        advanced: ['Headless CMS Prep', 'Integración Externa', 'Backup Automático', 'Soporte Técnico'],
+        enterprise: ['Ecosistema Web Pro', 'Migración de Datos', 'Seguridad Bancaria', 'Training Staff']
+    },
+
+    // Software
+    saas: {
+        simple: ['Arquitectura Multi-tenant', 'Suscripciones Stripe', 'Panel Cliente Core', 'Onboarding'],
+        medium: ['Métricas de Negocio', 'Free/Premium Toggles', 'Gestión de Equipos', 'Support Ticketing'],
+        advanced: ['White Label Options', 'API para Clientes', 'Integraciones Terceros', 'Data Analytics'],
+        enterprise: ['Product-Led Growth', 'Custom SLAs', 'On-premise Options', 'Priority Dev Team']
+    },
+    'admin-panel': {
+        simple: ['Gestión de Entidades', 'Gráficos de Resumen', 'Exportaciones CSV', 'Audit Logs'],
+        medium: ['Reportes PDF Auto', 'Dashboards Visuales', 'Workflows de Aprobación', 'UI/UX Eficiente'],
+        advanced: ['Automatización Procesos', 'Predicciones con Data', 'Firma Electrónica', 'Sincronización App'],
+        enterprise: ['Central de Operaciones', 'Misión Crítica Setup', 'ISO Compliance Ready', 'Soporte Dedicado']
+    },
+    'api-inv': {
+        simple: ['Endpoint Development', 'Docs con Swagger', 'Auth con JWT', 'Testing Suite'],
+        medium: ['Webhooks System', 'Rate Limiting', 'Caching Avanzado', 'Logging Centralizado'],
+        advanced: ['Microservicios Setup', 'Event-driven Arch', 'Serverless Functions', 'SDK Generation'],
+        enterprise: ['Ecosistema API Full', 'High-Availability', 'Seguridad Militar', 'Maintenance Pro']
+    },
+    'crm-auto': {
+        simple: ['Captura de Leads', 'Historias de Usuario', 'Campos a Medida', 'Alertas Email'],
+        medium: ['Lead Scoring', 'Auto-responders Pro', 'Pipelines Visuales', 'Integración Social'],
+        advanced: ['Predicción de Ventas', 'Omnichannel CRM', 'Bot Predictivo', 'Automatización Full'],
+        enterprise: ['Sales Ops Engine', 'Migración Completa', 'Consultoría CRM', 'Escala Global']
+    },
+
+    // VFX
+    motion: {
+        simple: ['Animación 2D Logos', 'Lower Thirds', 'Transiciones Pro', 'Full HD Output'],
+        medium: ['Explainer Video 60s', 'Character Animation', 'Sound Design Integrado', '4K Output'],
+        advanced: ['Storytelling Visual', 'Simulaciones Físicas', 'Animación Kinética', 'Formatos Verticales'],
+        enterprise: ['Campaña Motion Full', 'Estilo Artístico Único', 'Iteraciones Pro', 'Broadcast Ready']
+    },
+    'vfx-special': {
+        simple: ['Green Screen Removal', 'Color Correction', 'Clean Plates', 'Roto Estándar'],
+        medium: ['Composición 3D', 'Partículas y Efectos', 'Matchmoving', 'Cinematic Look'],
+        advanced: ['Simulaciones Complejas', 'Integración CGI Pro', 'Digital Matte Painting', 'Efectos Dinámicos'],
+        enterprise: ['Movie Quality VFX', 'Supervisión en Set', 'Render Farm Access', 'Finish Pro']
+    },
+    'video-edit': {
+        simple: ['Corte y Ritmo', 'Corrección de Color', 'Títulos Básicos', 'Música Stock'],
+        medium: ['Narrativa Visual', 'Audio Mixing Pro', 'Color Grading Pro', 'Multi-cam Edit'],
+        advanced: ['Edición Documental', 'Efectos de Sonido', 'Dynamic Graphics', 'Masterización'],
+        enterprise: ['Producción de Spot', 'Director Cut Style', 'Derechos Música', 'High-End Master']
+    },
+    'anim-3d': {
+        simple: ['Modelado de Producto', 'Texturizado Básico', 'Iluminación Studio', 'Render Still'],
+        medium: ['Animación Producto', 'Mecanismos 3D', 'Materiales Realistas', 'Video 360'],
+        advanced: ['Entornos 3D Full', 'Dinámicas de Fluido', 'Rigging Complejo', 'Cotor Pro'],
+        enterprise: ['Experiencia Inmersiva', 'CGI Cinematográfico', 'Optimización Real-time', 'Asset Library']
+    },
+
+    // IA
+    chatbot: {
+        simple: ['Base de Conocimientos', 'Respuestas Naturales', 'Canal Web/WhatsApp', 'Setup Básico'],
+        medium: ['Entrenamiento Custom', 'Captura de Datos', 'Flujos de Venta', 'Analytics Dashboard'],
+        advanced: ['Integración API Pro', 'Voice-to-Text', 'Memoria de Contexto', 'Soporte Multi-bot'],
+        enterprise: ['Estrategia IA Corp', 'Sistemas RAG Full', 'Seguridad On-premise', 'Soporte 24/7']
+    },
+    flows: {
+        simple: ['Conexión No-Code', 'Triggers de Email', 'Sync de Datos', 'Reportes Diarios'],
+        medium: ['Workflows Condicionales', 'Webhooks Integration', 'Transformación Data', 'Control de Error'],
+        advanced: ['Arquitectura Low-Code', 'Agentes Multi-paso', 'Notificaciones App', 'Custom Scripts'],
+        enterprise: ['Automación de Negocio', 'Centro de Operaciones', 'Compliance & Security', 'Maintenance']
+    },
+    'voice-agents': {
+        simple: ['Voz Natural Estándar', 'Scripts de Atención', 'Clonación de Voz', 'Latencia Baja'],
+        medium: ['Voz con Emociones', 'Detección de Intención', 'Transferencia Humana', 'Grabación de Calls'],
+        advanced: ['Sistemas de Telefonía', 'Multilenguaje Real', 'IA Conversacional Pro', 'API Voice Sync'],
+        enterprise: ['Call Center IA Full', 'Training Personalizado', 'Analítica de Voz', 'Infraestructura VIP']
+    },
+
+    // Custom para todas las categorías
+    custom: {
+        simple: ['Análisis de Requerimientos', 'Presupuesto Base', 'Consultoría Inicial', 'Plan de Proyecto'],
+        medium: ['Diseño a Medida', 'Desarrollo Ágil', 'Revisiones de Avance', 'Soporte Post-entrega'],
+        advanced: ['Arquitectura Full Custom', 'Tecnología Exclusiva', 'Garantía de Calidad', 'Optimización'],
+        enterprise: ['Partner Estratégico', 'Equipo Dedicado', 'Escalabilidad Total', 'Acuerdo de Nivel']
     }
 }
 
@@ -180,8 +293,8 @@ const urgencies = [
 
 export default function QuoteCalculator() {
     const [currentStep, setCurrentStep] = useState(1)
-    const [selectedService, setSelectedService] = useState(services[1])
-    const [selectedSubService, setSelectedSubService] = useState(services[1].subServices[0])
+    const [selectedService, setSelectedService] = useState(services[0])
+    const [selectedSubService, setSelectedSubService] = useState(services[0].subServices[0])
     const [selectedComplexity, setSelectedComplexity] = useState(complexities[0])
     const [selectedUrgency, setSelectedUrgency] = useState(urgencies[0])
     const [total, setTotal] = useState(0)
@@ -334,7 +447,9 @@ export default function QuoteCalculator() {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="calculator__step"
                                 >
-                                    <h3 className="calculator__step-title">Define el servicio específico</h3>
+                                    <h3 className="calculator__step-title">
+                                        Define el servicio de <span className="highlight">{selectedService.label}</span>
+                                    </h3>
                                     <div className="calculator__options calculator__options--subservices">
                                         {selectedService.subServices.map((sub) => (
                                             <div
@@ -342,7 +457,12 @@ export default function QuoteCalculator() {
                                                 className={`calculator__option calculator__option--subservice ${selectedSubService.id === sub.id ? 'active' : ''}`}
                                                 onClick={() => setSelectedSubService(sub)}
                                             >
-                                                <span className="calculator__option-label">{sub.label}</span>
+                                                <div className="calculator__option-header">
+                                                    <span className="calculator__option-label">{sub.label}</span>
+                                                    <div className="calculator__category-mini-icon">
+                                                        {selectedService.icon}
+                                                    </div>
+                                                </div>
                                                 <p className="calculator__option-desc">{sub.desc}</p>
                                                 {!sub.isCustom && <span className="calculator__option-base">Base: ${sub.base}</span>}
                                             </div>
@@ -381,7 +501,7 @@ export default function QuoteCalculator() {
                                                         </div>
                                                         <p className="complexity-card__desc">{comp.desc}</p>
                                                         <ul className="complexity-card__features">
-                                                            {serviceFeatures[selectedService.id][comp.id].map((f, i) => (
+                                                            {(serviceFeatures[selectedSubService.id] || serviceFeatures.custom)[comp.id].map((f, i) => (
                                                                 <li key={i}>
                                                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                                                         <polyline points="20 6 9 17 4 12" />
