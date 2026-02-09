@@ -102,7 +102,7 @@ export default function Hero() {
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                         </svg>
-                        Cotizar Proyecto
+                        Obtén un diagnóstico gratuito
                     </motion.a>
 
                     <motion.a
@@ -111,7 +111,7 @@ export default function Hero() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        Ver Portafolio
+                        Ver casos de éxito
                     </motion.a>
                 </motion.div>
 

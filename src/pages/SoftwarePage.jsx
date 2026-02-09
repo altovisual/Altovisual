@@ -269,6 +269,7 @@ export default function SoftwarePage() {
             <ServiceFAQ
                 title="Preguntas sobre Desarrollo de Software"
                 faqs={faqs}
+                accentColor="#a855f7"
             />
             <ServiceCTA
                 title="¿Tienes una idea que necesita software?"

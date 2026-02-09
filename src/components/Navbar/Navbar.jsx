@@ -8,7 +8,7 @@ const navLinks = [
     { href: '/', hash: '#servicios', label: 'Servicios' },
     { href: '/', hash: '#portafolio', label: 'Portafolio' },
     { href: '/', hash: '#cotizar', label: 'Cotizar' },
-    { href: '/', hash: '#contacto', label: 'Contacto' },
+    { href: '/', hash: '#contacto', label: 'Agenda tu consultoría' },
 ]
 
 export default function Navbar() {
@@ -154,7 +154,7 @@ export default function Navbar() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        Empezar Proyecto
+                        Agenda una consultoría de 15 min
                     </motion.div>
                 </Link>
 

@@ -268,6 +268,7 @@ export default function DesignPage() {
             <ServiceFAQ
                 title="Preguntas sobre Diseño Gráfico"
                 faqs={faqs}
+                accentColor="#00f2fe"
             />
             <ServiceCTA
                 title="¿Listo para transformar tu marca?"

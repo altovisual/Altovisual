@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import LiquidEther from '../Backgrounds/LiquidEther'
 import GradientText from '../Common/GradientText'
+import ShinyButton from '../Common/ShinyButton'
 import './ServicePage.css'
 
 export default function ServiceHero({
@@ -120,16 +121,16 @@ export default function ServiceHero({
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                    <Link
-                        to="/#cotizar"
-                        className="btn btn-primary"
-                        style={{
-                            background: `linear-gradient(135deg, ${accentColor}, ${secondaryColor})`,
-                            boxShadow: `0 0 40px ${accentColor}40`
+                    <ShinyButton
+                        text="Cotizar Ahora"
+                        accentColor={accentColor}
+                        onClick={() => {
+                            const element = document.querySelector('#cotizar');
+                            if (element) {
+                                element.scrollIntoView({ behavior: 'smooth' });
+                            }
                         }}
-                    >
-                        Cotizar Ahora
-                    </Link>
+                    />
                     <Link to="/#contacto" className="btn btn-secondary">
                         Contactar
                     </Link>

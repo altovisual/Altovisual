@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function ServiceFAQ({ title = "Preguntas Frecuentes", faqs = [] }) {
+export default function ServiceFAQ({ title = "Preguntas Frecuentes", faqs = [], accentColor = '#00f2fe' }) {
     const [activeIndex, setActiveIndex] = useState(null)
 
     return (
-        <section className="service-faq section">
+        <section className="service-faq section" style={{ '--faq-accent': accentColor }}>
             <div className="container">
                 <h2 className="service-faq__title">{title}</h2>
                 <div className="service-faq__list">

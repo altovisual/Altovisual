@@ -274,6 +274,7 @@ export default function VfxPage() {
             <ServiceFAQ
                 title="Preguntas sobre Video & VFX"
                 faqs={faqs}
+                accentColor="#f97316"
             />
             <ServiceCTA
                 title="¿Tienes un proyecto audiovisual en mente?"

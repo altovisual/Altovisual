@@ -112,11 +112,34 @@
     border-radius: var(--radius-xl);
 }
 
+.service-hero__cta-primary .inner-content {
+    padding: 0.8rem 2rem;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
 .service-hero__cta-group {
     display: flex;
     justify-content: center;
     gap: var(--space-md);
-    flex-wrap: wrap;
+    margin-top: var(--space-lg);
+}
+
+@media (max-width: 480px) {
+    .service-hero__cta-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-hero__cta-primary,
+    .service-hero__cta-primary .inner-content {
+        width: 100%;
+        max-width: 280px;
+    }
 }
 
 /* Features Section */
@@ -694,7 +717,7 @@
 }
 
 .faq-item__question:hover {
-    color: var(--accent-start);
+    color: var(--faq-accent, var(--accent-start));
 }
 
 .faq-item__icon {
@@ -706,7 +729,7 @@
 
 .faq-item--open .faq-item__icon {
     transform: rotate(45deg);
-    color: var(--accent-start);
+    color: var(--faq-accent, var(--accent-start));
 }
 
 .faq-item__answer {

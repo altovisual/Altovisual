@@ -269,6 +269,7 @@ export default function WebPage() {
             <ServiceFAQ
                 title="Preguntas sobre Desarrollo Web"
                 faqs={faqs}
+                accentColor="#4facfe"
             />
             <ServiceCTA
                 title="¿Listo para lanzar tu sitio web?"

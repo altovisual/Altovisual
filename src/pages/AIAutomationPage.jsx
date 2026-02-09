@@ -198,6 +198,7 @@ export default function AIAutomationPage() {
             <ServiceFAQ
                 title="Preguntas frecuentes sobre IA"
                 faqs={faqs}
+                accentColor="#a855f7"
             />
             <ServiceCTA
                 title="¿Deseas una empresa más inteligente?"

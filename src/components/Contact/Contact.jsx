@@ -55,10 +55,10 @@ export default function Contact() {
                     {/* Info Side */}
                     <div className="contact__info">
                         <span className="contact__label">Contacto</span>
-                        <h2 className="contact__title">Hablemos de tu próximo proyecto</h2>
+                        <h2 className="contact__title">Agenda tu consultoría gratuita de 15 minutos</h2>
                         <p className="contact__description">
-                            ¿Tienes una idea en mente? Estamos listos para ayudarte a hacerla realidad.
-                            Escríbenos y comencmos a trabajar juntos.
+                            ¿Tienes una idea en mente? Obtén un diagnóstico personalizado sin compromiso.
+                            Analizaremos tu proyecto y te daremos recomendaciones profesionales.
                         </p>
 
                         <div className="contact__details">
@@ -159,7 +159,7 @@ export default function Contact() {
                                 {status === 'submitting' ? (
                                     <div className="contact__spinner"></div>
                                 ) : (
-                                    'Enviar Mensaje'
+                                    'Agendar mi consultoría ahora'
                                 )}
                             </button>
                         </form>

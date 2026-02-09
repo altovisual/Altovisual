@@ -55,14 +55,14 @@ export default function ServiceCTA({ title, description, accentColor }) {
                                 boxShadow: `0 0 30px ${accentColor}30`
                             }}
                         >
-                            Empezar Proyecto
+                            Solicitar diagnóstico gratuito
                         </Link>
                         <Link
                             to="/#contacto"
                             className="btn btn-secondary"
                             onClick={handleButtonClick}
                         >
-                            Contáctanos
+                            Agenda tu consultoría de 15 min
                         </Link>
                     </div>
                 </motion.div>
