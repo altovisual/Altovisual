@@ -77,11 +77,12 @@
   --z-tooltip: 400;
 }
 
+
 html {
   scroll-behavior: auto;
   font-size: 16px;
   max-width: 100%;
-  overflow-x: hidden;
+  /* NO usar overflow-x: hidden en html/body porque rompe position: sticky en mobile */
 }
 
 body {
@@ -90,7 +91,6 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   max-width: 100%;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -98,7 +98,7 @@ body {
 #root {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip no rompe sticky como overflow: hidden */
 }
 
 /* Typography */
@@ -366,12 +366,12 @@ a {
 
 @media (max-width: 768px) {
 
-  html,
-  body,
+  /* NO aplicar overflow-x: hidden a html/body en mobile, rompe position: sticky */
   #root {
     max-width: 100%;
-    overflow-x: hidden !important;
+    overflow-x: clip !important;
   }
+
 
   :root {
     --space-xl: 3rem;

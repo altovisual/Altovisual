@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useSpring, useTransform, animate } from 'framer-motion'
 import QuoteModal from './QuoteModal'
 import GradientText from '../Common/GradientText'
@@ -300,6 +300,9 @@ export default function QuoteCalculator() {
     const [total, setTotal] = useState(0)
     const [isIdling, setIsIdling] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [showFixedBar, setShowFixedBar] = useState(false)
+    const [navbarHeight, setNavbarHeight] = useState(65)
+    const sectionRef = useRef(null)
 
     const steps = [
         { id: 1, label: 'Categoría' },
@@ -326,11 +329,127 @@ export default function QuoteCalculator() {
         setTotal(finalPrice)
     }, [selectedSubService, selectedComplexity, selectedUrgency])
 
-    const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3))
-    const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1))
+    // Calcular la altura real del navbar para posicionar la barra fija
+    useEffect(() => {
+        const updateNavbarHeight = () => {
+            const navbar = document.querySelector('.navbar')
+            if (navbar) {
+                setNavbarHeight(navbar.getBoundingClientRect().height)
+            }
+        }
+        updateNavbarHeight()
+        window.addEventListener('scroll', updateNavbarHeight, { passive: true })
+        window.addEventListener('resize', updateNavbarHeight, { passive: true })
+        return () => {
+            window.removeEventListener('scroll', updateNavbarHeight)
+            window.removeEventListener('resize', updateNavbarHeight)
+        }
+    }, [])
+
+    // La barra aparece SOLO cuando el top del wrapper ya pasó por encima del navbar
+    // (usuario dentro del widget) y el wrapper todavía tiene contenido visible
+    useEffect(() => {
+        if (window.innerWidth > 992) return // solo mobile
+
+        const checkPosition = () => {
+            if (!sectionRef.current) return
+            const wrapper = sectionRef.current.querySelector('.calculator__wrapper')
+            if (!wrapper) return
+
+            const wrapperRect = wrapper.getBoundingClientRect()
+            const navbar = document.querySelector('.navbar')
+            const navH = navbar ? navbar.getBoundingClientRect().height : navbarHeight
+
+            // La barra aparece cuando:
+            // 1. El top del wrapper pasó el navbar (con pequeño buffer de 8px para el momento del scroll)
+            // 2. El bottom del wrapper todavía tiene contenido por encima del navbar
+            const isInsideWrapper = wrapperRect.top < navH + 8 && wrapperRect.bottom > navH + 60
+            setShowFixedBar(isInsideWrapper)
+        }
+
+        window.addEventListener('scroll', checkPosition, { passive: true })
+        checkPosition()
+
+        return () => window.removeEventListener('scroll', checkPosition)
+    }, [navbarHeight])
+
+
+    // Bloquear scroll del body cuando el modal está abierto (compatible con Lenis)
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isModalOpen])
+
+    const scrollToCalculator = () => {
+        const section = document.getElementById('cotizar');
+        if (!section) return
+        // Scrollear al wrapper directamente (no al título de la sección)
+        // Así el wrapper queda justo debajo del navbar y la barra sigue visible
+        const wrapper = section.querySelector('.calculator__wrapper')
+        const target = wrapper || section
+        const y = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 4
+        window.scrollTo({ top: y, behavior: 'smooth' })
+    }
+
+    const nextStep = () => {
+        setCurrentStep(prev => Math.min(prev + 1, 3))
+        setTimeout(scrollToCalculator, 50)
+    }
+    const prevStep = () => {
+        setCurrentStep(prev => Math.max(prev - 1, 1))
+        setTimeout(scrollToCalculator, 50)
+    }
+
 
     return (
-        <section id="cotizar" className="calculator section">
+        <section id="cotizar" ref={sectionRef} className="calculator section">
+            {/* Barra fija: visible cuando está en la sección y el modal NO está abierto */}
+            <AnimatePresence>
+                {showFixedBar && !isModalOpen && (
+                    <motion.div
+                        className="calculator__fixed-bar"
+                        style={{ top: navbarHeight }}
+                        initial={{ y: -80, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -80, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                    >
+                        <div className="calculator__fixed-bar__stepper">
+                            {steps.map((step) => (
+                                <div
+                                    key={step.id}
+                                    className={`calculator__step-item ${currentStep === step.id ? 'active' : ''} ${currentStep > step.id ? 'completed' : ''}`}
+                                >
+                                    <span className="calculator__step-number">
+                                        {currentStep > step.id ? '✓' : step.id}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="calculator__fixed-bar__price">
+                            <span className="calculator__price-label">Estimado</span>
+                            <div className="calculator__price">
+                                {isIdling ? (
+                                    <span className="calculator__price-variable" style={{ fontSize: '1.1rem' }}>A convenir</span>
+                                ) : (
+                                    <>
+                                        <span className="calculator__price-currency">$</span>
+                                        <AnimatedNumber value={total} />
+                                        <span className="calculator__price-suffix">+</span>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <div className="container">
                 <div className="calculator__header">
                     <span className="calculator__label">The Magic Quote</span>
@@ -350,6 +469,7 @@ export default function QuoteCalculator() {
 
                 <div className="calculator__wrapper glass">
                     <div className="calculator__sidebar">
+
                         {/* Stepper Indicator */}
                         <div className="calculator__stepper">
                             {steps.map((step) => (
@@ -483,7 +603,9 @@ export default function QuoteCalculator() {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="calculator__step"
                                 >
-                                    <h3 className="calculator__step-title">Ajusta los detalles finales</h3>
+                                    <h3 className="calculator__step-title">
+                                        Ajusta los detalles de <span className="highlight">{selectedSubService.label}</span>
+                                    </h3>
 
                                     <div className="calculator__details-grid">
                                         <div className="calculator__detail-section">

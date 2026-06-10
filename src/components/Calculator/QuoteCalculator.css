@@ -1,3 +1,53 @@
+/* =============================================
+   Barra Fija de Precio (Mobile) - JavaScript controlled
+   Aparece cuando el usuario scrollea dentro de la sección
+   No depende de position: sticky (Lenis lo rompe)
+   ============================================= */
+.calculator__fixed-bar {
+    display: none; /* Solo se muestra en mobile */
+    position: fixed;
+    /* top se aplica dinámicamente via JS con la altura real del navbar */
+    left: 0;
+    right: 0;
+    z-index: 500; /* Por debajo del navbar (1000) pero sobre el contenido */
+    background: rgba(8, 8, 8, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    padding: 10px 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.calculator__fixed-bar__stepper {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+
+.calculator__fixed-bar__price {
+    text-align: right;
+}
+
+.calculator__fixed-bar__price .calculator__price-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+@media (max-width: 992px) {
+    .calculator__fixed-bar {
+        display: flex;
+    }
+}
+
 /* Wrapper Layout */
 .calculator__wrapper {
     display: grid;
@@ -18,7 +68,7 @@
     flex-direction: column;
     gap: var(--space-xl);
     position: sticky;
-    top: 0;
+    top: 100px;
     height: fit-content;
 }
 
@@ -379,50 +429,26 @@
 }
 
 @media (max-width: 992px) {
+    /* El wrapper es flex column, sin overflow que rompa el fixed bar */
     .calculator__wrapper {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         min-height: auto;
+        overflow: visible;
+        /* Agrega padding-top para que el contenido no quede bajo la barra fija de precio */
+        padding-top: 56px;
     }
 
+    /* El sidebar nativo queda oculto — la barra fija de JS lo reemplaza */
     .calculator__sidebar {
-        border-right: none;
-        border-bottom: 1px solid var(--glass-border);
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: var(--space-lg) var(--space-xl);
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        backdrop-filter: blur(12px);
-        background: rgba(10, 10, 10, 0.85);
-        gap: var(--space-md);
-    }
-
-    .calculator__stepper {
-        flex-direction: row;
-        gap: var(--space-lg);
-    }
-
-    .calculator__step-label,
-    .calculator__sidebar-summary {
         display: none;
-    }
-
-    .calculator__sidebar-price {
-        padding-top: 0;
-        border-top: none;
-        text-align: right;
-    }
-
-    .calculator__price span:nth-child(2) {
-        font-size: var(--text-2xl);
     }
 
     .calculator__main {
         padding: var(--space-xl);
     }
 }
+
 
 @media (max-width: 768px) {
     .calculator__options--services {
@@ -484,8 +510,18 @@
 
 @media (max-width: 400px) {
     .calculator__sidebar {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        padding: var(--space-sm);
+        gap: var(--space-xs);
+        justify-content: space-between;
+    }
+
+    .calculator__stepper {
         gap: var(--space-sm);
+    }
+
+    .calculator__price span:nth-child(2) {
+        font-size: var(--text-lg);
     }
 }
