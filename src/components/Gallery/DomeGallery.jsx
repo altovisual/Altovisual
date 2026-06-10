@@ -2,17 +2,18 @@ import { useEffect, useMemo, useRef, useCallback } from 'react';
 import { useGesture } from '@use-gesture/react';
 import './DomeGallery.css';
 
+// Solo se cargan 6 imágenes — mejora rendimiento (menos bundle size y requests)
 const globImages = import.meta.glob('../../assets/componente redondo/*.{png,jpeg,jpg,webp}', { eager: true });
-const DEFAULT_IMAGES = Object.values(globImages).map((img, index) => ({
+const DEFAULT_IMAGES = Object.values(globImages).slice(0, 6).map((img, index) => ({
     src: img.default || img,
-    alt: `Abstract art ${index + 1}`
+    alt: `Trabajo AltoVisual ${index + 1}`
 }));
 
 const DEFAULTS = {
     maxVerticalRotationDeg: 5,
     dragSensitivity: 15,
     enlargeTransitionMs: 300,
-    segments: 35
+    segments: 12
 };
 
 const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
@@ -27,17 +28,20 @@ const getDataNumber = (el, name, fallback) => {
     return Number.isFinite(n) ? n : fallback;
 };
 
-function buildItems(pool, seg) {
-    const xCols = Array.from({ length: seg }, (_, i) => -37 + i * 2);
-    const evenYs = [-4, -2, 0, 2, 4];
-    const oddYs = [-3, -1, 1, 3, 5];
+function buildItems(pool) {
+    // 6 tarjetas fijas bien proporcionadas y centradas en la vista frontal:
+    // 3 columnas (izquierda -25deg, centro 0deg, derecha 25deg)
+    // 2 filas (arriba -12deg, abajo 12deg)
+    // Usando segments = 12 (unit = 15deg), sizeX = 2 y sizeY = 2.5
+    const coords = [
+        { x: -2.7, y: -0.6, sizeX: 2, sizeY: 2.6 },
+        { x: -0.5, y: -0.6, sizeX: 2, sizeY: 2.6 },
+        { x:  1.7, y: -0.6, sizeX: 2, sizeY: 2.6 },
+        { x: -2.7, y:  2.2, sizeX: 2, sizeY: 2.6 },
+        { x: -0.5, y:  2.2, sizeX: 2, sizeY: 2.6 },
+        { x:  1.7, y:  2.2, sizeX: 2, sizeY: 2.6 },
+    ];
 
-    const coords = xCols.flatMap((x, c) => {
-        const ys = c % 2 === 0 ? evenYs : oddYs;
-        return ys.map(y => ({ x, y, sizeX: 2, sizeY: 2 }));
-    });
-
-    const totalSlots = coords.length;
     if (pool.length === 0) {
         return coords.map(c => ({ ...c, src: '', alt: '' }));
     }
@@ -49,19 +53,18 @@ function buildItems(pool, seg) {
         return { src: image.src || '', alt: image.alt || '' };
     });
 
-    const usedImages = Array.from({ length: totalSlots }, (_, i) => normalizedImages[i % normalizedImages.length]);
-
     return coords.map((c, i) => ({
         ...c,
-        src: usedImages[i].src,
-        alt: usedImages[i].alt
+        src: normalizedImages[i % normalizedImages.length].src,
+        alt: normalizedImages[i % normalizedImages.length].alt
     }));
 }
 
-function computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments) {
-    const unit = 360 / segments / 2;
-    const rotateY = unit * (offsetX + (sizeX - 1) / 2);
-    const rotateX = unit * (offsetY - (sizeY - 1) / 2);
+function computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY) {
+    const rotY = 9;
+    const rotX = 6;
+    const rotateY = rotY * (offsetX + (sizeX - 1) / 2);
+    const rotateX = rotX * (offsetY - (sizeY - 1) / 2);
     return { rotateX, rotateY };
 }
 
@@ -116,7 +119,7 @@ export default function DomeGallery({
         document.body.classList.remove('dg-scroll-lock');
     }, []);
 
-    const items = useMemo(() => buildItems(images, segments), [images, segments]);
+    const items = useMemo(() => buildItems(images), [images]);
 
     const applyTransform = (xDeg, yDeg) => {
         const el = sphereRef.current;
@@ -404,7 +407,7 @@ export default function DomeGallery({
             const offsetY = getDataNumber(parent, 'offsetY', 0);
             const sizeX = getDataNumber(parent, 'sizeX', 2);
             const sizeY = getDataNumber(parent, 'sizeY', 2);
-            const parentRot = computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY, segments);
+            const parentRot = computeItemBaseRotation(offsetX, offsetY, sizeX, sizeY);
             const parentY = normalizeAngle(parentRot.rotateY);
             const globalY = normalizeAngle(rotationRef.current.y);
             let rotY = -(parentY + globalY) % 360;

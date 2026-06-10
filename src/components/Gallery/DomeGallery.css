@@ -6,10 +6,10 @@
     --radius: 520px;
     --viewer-pad: 72px;
     --circ: calc(var(--radius) * 3.14);
-    --rot-y: calc((360deg / var(--segments-x)) / 2);
-    --rot-x: calc((360deg / var(--segments-y)) / 2);
-    --item-width: calc(var(--circ) / var(--segments-x));
-    --item-height: calc(var(--circ) / var(--segments-y));
+    --rot-y: 9deg;
+    --rot-x: 6deg;
+    --item-width: calc(var(--circ) / 24);
+    --item-height: calc(var(--circ) / 24);
 }
 
 .dome-wrapper {
@@ -86,7 +86,7 @@ main.sphere-main {
     transform-origin: 50% 50%;
     backface-visibility: hidden;
     transition: transform 300ms;
-    transform: rotateY(calc(var(--rot-y) * (var(--offset-x) + ((var(--item-size-x) - 1) / 2)) + var(--rot-y-delta, 0deg))) rotateX(calc(var(--rot-x) * (var(--offset-y) - ((var(--item-size-y) - 1) / 2)) + var(--rot-x-delta, 0deg))) translateZ(var(--radius));
+    transform: rotateY(calc(var(--rot-y) * (var(--offset-x) + ((var(--item-size-x) - 1) / 2)) + var(--rot-y-delta, 0deg))) rotateX(calc(var(--rot-x) * (var(--offset-y) - ((var(--item-size-y) - 1) / 2)) + var(--rot-x-delta, 0deg))) translateZ(calc(var(--radius) * 0.5));
 }
 
 .item__image {

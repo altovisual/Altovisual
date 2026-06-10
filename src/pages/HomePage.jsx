@@ -2,7 +2,7 @@ import Hero from '../components/Hero/Hero'
 import BentoGrid from '../components/Services/BentoGrid'
 import QuoteCalculator from '../components/Calculator/QuoteCalculator'
 import Portfolio from '../components/Portfolio/Portfolio'
-import DomeGallery from '../components/Gallery/DomeGallery'
+import GallerySection from '../components/Gallery/GallerySection'
 import ChromaGrid from '../components/Common/ChromaGrid'
 import GradientText from '../components/Common/GradientText'
 import Contact from '../components/Contact/Contact'
@@ -25,7 +25,7 @@ export default function HomePage() {
         <main>
             <Hero />
             <BentoGrid />
-            <DomeGallery />
+            <GallerySection />
 
             {/* Sección Sobre Mí / Fundador */}
             <section className="studio section" id="studio">
