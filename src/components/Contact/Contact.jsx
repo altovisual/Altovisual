@@ -71,7 +71,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <h4>Email</h4>
-                                    <a href="mailto:hola@altovisual.studio">hola@altovisual.studio</a>
+                                    <a href="mailto:altovisual.ba@gmail.com">altovisual.ba@gmail.com</a>
                                 </div>
                             </div>
 

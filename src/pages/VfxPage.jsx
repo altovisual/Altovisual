@@ -105,21 +105,20 @@ const features = [
     {
         icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <polygon points="23 7 16 12 23 17 23 7" />
-                <rect x="1" y="5" width="15" height="14" rx="2" />
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
             </svg>
         ),
-        title: 'Edición de Video',
-        tag: 'Montaje',
-        description: 'Montaje narrativo, ritmo visual, sound design y exportación en múltiples formatos.',
-        longDescription: 'Donde ocurre la magia del cine. Seleccionamos las mejores tomas para construir una historia sólida con un ritmo imparable, integrando sonido y visuales para un resultado profesional.',
+        title: 'Videos Publicitarios con IA',
+        tag: 'Innovación',
+        description: 'Creación de spots de video de alto impacto y conversión utilizando IA generativa de vanguardia.',
+        longDescription: 'Optimizamos la producción de comerciales con el poder de la inteligencia artificial. Generamos guiones persuasivos, avatares realistas, clonación de voz de IA y efectos visuales generativos fluidos para capturar al máximo la atención de tu audiencia.',
         includes: [
-            'Montaje Narrativo y Multi-cámara',
-            'Diseño y Mezcla de Sonido',
-            'Selección de Música de Stock',
-            'Corrección de Audio Básica',
-            'Exportación en 4K/Log/Socials',
-            'Gestión de Subtítulos y Assets'
+            'Generación de Guiones con IA',
+            'Locución de Voz IA Profesional',
+            'Avatares y Portavoces Virtuales',
+            'Hooks e Intros de Alto Impacto',
+            'Material de Stock Generativo',
+            'Optimización para Social Ads'
         ]
     },
     {
@@ -168,7 +167,7 @@ const pricingPlans = [
     {
         name: 'Video Básico',
         description: 'Edición y post-producción esencial',
-        price: '500',
+        price: '350',
         features: [
             'Hasta 2 min de video final',
             'Edición profesional',
@@ -178,28 +177,28 @@ const pricingPlans = [
             'Entrega en 5 días'
         ],
         cta: 'Comenzar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Video Básico* ($500) para editar mis videos.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Video Básico* ($350) para editar mis videos.'
     },
     {
-        name: 'Motion Pro',
-        description: 'Animaciones y gráficos en movimiento',
-        price: '1,500',
+        name: 'Spot Publicitario IA',
+        description: 'Videos publicitarios optimizados para conversión con IA',
+        price: '1,050',
         featured: true,
         features: [
-            'Hasta 1 min de motion graphics',
-            'Animación 2D personalizada',
-            'Color grading avanzado',
-            'Sound design incluido',
-            '3 revisiones',
-            'Archivos fuente incluidos'
+            'Hasta 2 spots de 30s con IA',
+            'Guion y locución de voz IA',
+            'Avatares y presentadores virtuales',
+            'Motion graphics & subtítulos',
+            'Sound design y música comercial',
+            'Optimización para Ads (9:16 y 16:9)'
         ],
         cta: 'Más Popular',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero información sobre el plan *Motion Pro* ($1,500) para animaciones de impacto.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero información sobre el plan *Spot Publicitario IA* ($1,050) para mis anuncios.'
     },
     {
         name: 'VFX Premium',
         description: 'Efectos visuales de alto nivel',
-        price: '3,500',
+        price: '2,450',
         features: [
             'Compositing avanzado',
             'Animación 3D',
@@ -209,7 +208,7 @@ const pricingPlans = [
             'Soporte post-entrega'
         ],
         cta: 'Cotizar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Necesito una cotización para el plan *VFX Premium* ($3,500) para un proyecto de alta gama.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Necesito una cotización para el plan *VFX Premium* ($2,450) para un proyecto de alta gama.'
     }
 ]
 
@@ -248,12 +247,12 @@ export default function VfxPage() {
     return (
         <>
             <ServiceHero
-                title="Video & VFX de Impacto"
+                title="Video, VFX & IA Publicitaria"
                 subtitle="Producción Audiovisual"
-                description="Producción audiovisual de alto nivel con motion graphics y efectos visuales que capturan la atención y cuentan historias memorables."
+                description="Producción audiovisual de alto nivel con motion graphics, efectos visuales y spots de video generados con IA para capturar la atención de tu audiencia."
                 accentColor="#f97316"
                 secondaryColor="#eab308"
-                features={['After Effects', 'DaVinci Resolve', 'Cinema 4D', 'Nuke', 'Premiere Pro', 'Blender']}
+                features={['After Effects', 'DaVinci Resolve', 'Runway Gen-3', 'Sora / Luma', 'Premiere Pro', 'Blender']}
                 icon={VFX_ICON}
             />
             <ServiceFeatures

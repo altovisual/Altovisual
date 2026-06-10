@@ -6,31 +6,17 @@ import DomeGallery from '../components/Gallery/DomeGallery'
 import ChromaGrid from '../components/Common/ChromaGrid'
 import GradientText from '../components/Common/GradientText'
 import Contact from '../components/Contact/Contact'
+import integranteImg from '../assets/integrantes/hf_20260307_151456_417a9032-f714-4db1-9fca-aea30fa0d6e4 1 (1).png'
 
 const teamMembers = [
     {
-        image: 'https://i.pravatar.cc/300?img=8',
-        title: 'Alex Rivera',
-        subtitle: 'Creative Director',
-        handle: '@alexvisual',
-        borderColor: '#00f2fe',
-        gradient: 'linear-gradient(145deg, #00f2fe, #000)',
-    },
-    {
-        image: 'https://i.pravatar.cc/300?img=11',
-        title: 'Jordan Chen',
-        subtitle: 'Lead Developer',
-        handle: '@jordan_dev',
-        borderColor: '#4facfe',
-        gradient: 'linear-gradient(210deg, #4facfe, #000)',
-    },
-    {
-        image: 'https://i.pravatar.cc/300?img=3',
-        title: 'Morgan Blake',
-        subtitle: 'VFX Specialist',
-        handle: '@morgan_vfx',
-        borderColor: '#a855f7',
-        gradient: 'linear-gradient(165deg, #a855f7, #000)',
+        image: integranteImg,
+        title: 'Manuel Mendoza',
+        subtitle: 'Full Stack y Fundador',
+        handle: '@manuelmendoza',
+        borderColor: '#00f260',
+        gradient: 'linear-gradient(145deg, #00f260, #000)',
+        bio: 'Como fundador y desarrollador principal de AltoVisual, lidero el diseño y desarrollo de cada solución. Me especializo en crear productos digitales interactivos, software a medida de alto rendimiento y experiencias visuales únicas que impulsan el crecimiento de tu marca.'
     }
 ];
 
@@ -41,7 +27,7 @@ export default function HomePage() {
             <BentoGrid />
             <DomeGallery />
 
-            {/* Sección de Equipo */}
+            {/* Sección Sobre Mí / Fundador */}
             <section className="studio section" id="studio">
                 <div className="container">
                     <div className="section-header" style={{ textAlign: 'center', marginBottom: 'var(--space-2xl)' }}>
@@ -52,15 +38,15 @@ export default function HomePage() {
                             color: 'var(--accent-start)',
                             display: 'block',
                             marginBottom: 'var(--space-md)'
-                        }}>Nuestro Equipo</span>
+                        }}>Fundador</span>
                         <h2 className="section-title" style={{ fontSize: 'var(--text-3xl)' }}>
-                            El Talento detrás de <GradientText
-                                colors={["#00f2fe", "#4facfe", "#00f2fe", "#a855f7", "#00f2fe"]}
+                            El Creador detrás de <GradientText
+                                colors={["#00f260", "#059669", "#00f260", "#059669", "#00f260"]}
                                 animationSpeed={3}
                                 showBorder={false}
-                            >
-                                AltoVisual
-                            </GradientText>
+                             >
+                                 AltoVisual
+                             </GradientText>
                         </h2>
                         <p style={{
                             color: 'var(--text-secondary)',
@@ -69,10 +55,10 @@ export default function HomePage() {
                             fontSize: 'var(--text-lg)',
                             lineHeight: '1.6'
                         }}>
-                            Un equipo multidisciplinario de expertos apasionados por fusionar creatividad y tecnología para escalar tu visión al siguiente nivel.
+                            Desarrollador y diseñador Full Stack apasionado por fusionar creatividad y tecnología de vanguardia para escalar tu visión al siguiente nivel.
                         </p>
                     </div>
-                    <ChromaGrid items={teamMembers} columns={3} rows={1} radius={400} />
+                    <ChromaGrid items={teamMembers} columns={1} rows={1} radius={400} className="single-member" />
                 </div>
             </section>
 

@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import LiquidEther from '../Backgrounds/LiquidEther'
 import GradientText from '../Common/GradientText'
 import LogoLoop from '../Common/LogoLoop'
 import {
@@ -39,9 +38,10 @@ export default function Hero() {
         <section id="inicio" ref={containerRef} className="hero">
             {/* Background */}
             <div className="hero__background">
-                <LiquidEther
-                    resolution={0.25}
-                    colors={['#00f2fe', '#4facfe', '#a855f7', '#f97316']}
+                <img
+                    src="/hf_20260610_125839_fd4bb2b0-c8c9-4f8e-8ba1-71ee9b2670af.png"
+                    alt="Fondo de Hero"
+                    className="hero__bg-image"
                 />
                 <div className="hero__gradient-overlay" />
             </div>
@@ -117,19 +117,6 @@ export default function Hero() {
 
             </motion.div>
 
-            {/* Floating Elements */}
-            <div className="hero__floating-elements">
-                <motion.div
-                    className="hero__float-element hero__float-element--1"
-                    animate={{ y: [-20, 20, -20], rotate: [0, 5, 0] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <motion.div
-                    className="hero__float-element hero__float-element--2"
-                    animate={{ y: [20, -20, 20], rotate: [0, -5, 0] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-                />
-            </div>
 
             {/* Logo Loop Section */}
             <motion.div

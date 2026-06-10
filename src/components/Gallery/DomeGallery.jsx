@@ -2,33 +2,11 @@ import { useEffect, useMemo, useRef, useCallback } from 'react';
 import { useGesture } from '@use-gesture/react';
 import './DomeGallery.css';
 
-const DEFAULT_IMAGES = [
-    {
-        src: 'https://images.unsplash.com/photo-1721332154433-3c22880c98e2?q=80&w=800&auto=format&fit=crop',
-        alt: 'Abstract art'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
-        alt: 'Modern sculpture'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=800&auto=format&fit=crop',
-        alt: 'Digital artwork'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=800&auto=format&fit=crop',
-        alt: 'Contemporary art'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop',
-        alt: 'Geometric pattern'
-    },
-    {
-        src: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=800&auto=format&fit=crop',
-        alt: 'Textured surface'
-    },
-    { src: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop', alt: 'Social media image' }
-];
+const globImages = import.meta.glob('../../assets/componente redondo/*.{png,jpeg,jpg,webp}', { eager: true });
+const DEFAULT_IMAGES = Object.values(globImages).map((img, index) => ({
+    src: img.default || img,
+    alt: `Abstract art ${index + 1}`
+}));
 
 const DEFAULTS = {
     maxVerticalRotationDeg: 5,

@@ -162,7 +162,7 @@ const pricingPlans = [
     {
         name: 'Logo Básico',
         description: 'Tu identidad visual esencial',
-        price: '300',
+        price: '210',
         features: [
             'Diseño de logotipo',
             '3 propuestas iniciales',
@@ -172,12 +172,12 @@ const pricingPlans = [
             'Entrega en 5 días'
         ],
         cta: 'Comenzar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Logo Básico* ($300) para mi marca.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Logo Básico* ($210) para mi marca.'
     },
     {
         name: 'Branding Pro',
         description: 'Identidad de marca completa',
-        price: '1,200',
+        price: '840',
         featured: true,
         features: [
             'Logotipo + variaciones',
@@ -188,12 +188,12 @@ const pricingPlans = [
             'Revisiones ilimitadas'
         ],
         cta: 'Más Popular',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Branding Pro* ($1,200) para una identidad de marca completa.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Branding Pro* ($840) para una identidad de marca completa.'
     },
     {
         name: 'Brand Integral',
         description: 'Todo para tu marca',
-        price: '2,800',
+        price: '1,960',
         features: [
             'Branding completo',
             'UI Kit para web/app',
@@ -203,7 +203,7 @@ const pricingPlans = [
             'Consultoría incluida'
         ],
         cta: 'Cotizar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Brand Integral* ($2,800) con todos los servicios de diseño.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Brand Integral* ($1,960) con todos los servicios de diseño.'
     }
 ]
 

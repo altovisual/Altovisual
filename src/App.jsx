@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import LocomotiveScroll from 'locomotive-scroll'
 
 import HomePage from './pages/HomePage'
 import DesignPage from './pages/DesignPage'
@@ -13,7 +14,7 @@ import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 
 function ScrollToHashElement() {
-    const { hash } = useLocation()
+    const { pathname, hash } = useLocation()
 
     useEffect(() => {
         if (hash) {
@@ -23,8 +24,10 @@ function ScrollToHashElement() {
                     element.scrollIntoView({ behavior: 'smooth' })
                 }, 100)
             }
+        } else {
+            window.scrollTo(0, 0)
         }
-    }, [hash])
+    }, [pathname, hash])
 
     return null
 }
@@ -115,6 +118,28 @@ function AppRoutes() {
 }
 
 export default function App() {
+    useEffect(() => {
+        const locomotiveScroll = new LocomotiveScroll({
+            lenisOptions: {
+                wrapper: window,
+                content: document.documentElement,
+                lerp: 0.1,
+                duration: 1.2,
+                orientation: 'vertical',
+                gestureOrientation: 'vertical',
+                smoothWheel: true,
+                smoothTouch: false,
+                wheelMultiplier: 1,
+                touchMultiplier: 2,
+                normalizeWheel: true,
+            }
+        });
+
+        return () => {
+            locomotiveScroll.destroy();
+        };
+    }, []);
+
     return (
         <Router>
             <AppRoutes />

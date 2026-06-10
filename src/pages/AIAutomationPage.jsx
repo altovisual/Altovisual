@@ -100,7 +100,7 @@ const pricingPlans = [
     {
         name: 'Starter IA',
         description: 'Automatiza lo esencial',
-        price: '1,200',
+        price: '840',
         features: [
             '1 Chatbot Inteligente',
             'Hasta 3 Workflows base',
@@ -110,12 +110,12 @@ const pricingPlans = [
             'Dashboard de métricas'
         ],
         cta: 'Comenzar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Starter IA* ($1,200) para automatizar mi negocio.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Starter IA* ($840) para automatizar mi negocio.'
     },
     {
         name: 'Professional AI',
         description: 'El motor de tu crecimiento',
-        price: '2,800',
+        price: '1,960',
         featured: true,
         features: [
             'Chatbots Multi-canal',
@@ -126,7 +126,7 @@ const pricingPlans = [
             'Soporte prioritario'
         ],
         cta: 'Más Popular',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Professional AI* ($2,800). Necesito IA y automatización avanzada.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Professional AI* ($1,960). Necesito IA y automatización avanzada.'
     },
     {
         name: 'Enterprise AI',

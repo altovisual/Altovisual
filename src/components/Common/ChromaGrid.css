@@ -17,6 +17,10 @@
     --r: 220px;
 }
 
+.chroma-grid.single-member {
+    max-width: 380px;
+}
+
 @media (max-width: 1124px) {
     .chroma-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -163,7 +163,7 @@ const pricingPlans = [
     {
         name: 'MVP Starter',
         description: 'Valida tu idea rápidamente',
-        price: '5,000',
+        price: '3,500',
         features: [
             'Prototipo funcional',
             'Hasta 5 pantallas',
@@ -173,12 +173,12 @@ const pricingPlans = [
             'Deploy en cloud'
         ],
         cta: 'Comenzar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa desarrollar mi idea con el plan *MVP Starter* ($5,000).'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa desarrollar mi idea con el plan *MVP Starter* ($3,500).'
     },
     {
         name: 'SaaS Pro',
         description: 'Tu plataforma escalable',
-        price: '15,000',
+        price: '10,500',
         featured: true,
         features: [
             'Aplicación completa',
@@ -189,7 +189,7 @@ const pricingPlans = [
             'Soporte 6 meses'
         ],
         cta: 'Más Popular',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero escalar mi plataforma con el plan *SaaS Pro* ($15,000).'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero escalar mi plataforma con el plan *SaaS Pro* ($10,500).'
     },
     {
         name: 'Enterprise',

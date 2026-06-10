@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import ProfileCard from './ProfileCard';
 import './ChromaGrid.css';
@@ -19,6 +20,7 @@ export const ChromaGrid = ({
     const setY = useRef(null);
     const pos = useRef({ x: 0, y: 0 });
     const [selectedItem, setSelectedItem] = useState(null);
+    const navigate = useNavigate();
 
     const demo = [
         {
@@ -174,8 +176,8 @@ export const ChromaGrid = ({
             <div ref={fadeRef} className="chroma-fade" />
 
             {selectedItem && (
-                <div className="chroma-modal-overlay" onClick={closeModal}>
-                    <div className="chroma-modal-content glass" onClick={e => e.stopPropagation()}>
+                <div className="chroma-modal-overlay" onClick={closeModal} data-lenis-prevent>
+                    <div className="chroma-modal-content glass" onClick={e => e.stopPropagation()} data-lenis-prevent>
                         <button className="chroma-modal-close" onClick={closeModal}>&times;</button>
                         <div className="chroma-modal-body">
                             <div className="chroma-modal-profile">
@@ -195,15 +197,20 @@ export const ChromaGrid = ({
                                 <span className="modal-handle">{selectedItem.handle}</span>
                                 <div className="modal-divider" />
                                 <p className="modal-bio">
-                                    Haz clic y arrastra la tarjeta para interactuar con el talento de AltoVisual.
-                                    Este {selectedItem.subtitle.toLowerCase()} es parte fundamental de nuestra visión creativa.
+                                    {selectedItem.bio || (
+                                        <>
+                                            Haz clic y arrastra la tarjeta para interactuar con el talento de AltoVisual.
+                                            Este {selectedItem.subtitle.toLowerCase()} es parte fundamental de mi visión creativa.
+                                        </>
+                                    )}
                                 </p>
                                 <div className="modal-actions">
                                     <button className="btn btn-primary" onClick={() => {
-                                        if (selectedItem.url && selectedItem.url !== '#') {
-                                            window.open(selectedItem.url, '_blank');
-                                        } else {
-                                            alert('Próximamente');
+                                        closeModal();
+                                        navigate('/#portafolio');
+                                        const element = document.getElementById('portafolio');
+                                        if (element) {
+                                            element.scrollIntoView({ behavior: 'smooth' });
                                         }
                                     }}>
                                         Ver Proyectos

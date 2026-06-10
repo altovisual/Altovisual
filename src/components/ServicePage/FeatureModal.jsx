@@ -47,6 +47,7 @@ export default function FeatureModal({ isOpen, onClose, feature, accentColor = '
                     exit={{ opacity: 0 }}
                     onClick={onClose}
                     style={{ perspective: 1000 }}
+                    data-lenis-prevent
                 >
                     <motion.div
                         ref={modalRef}
@@ -63,6 +64,7 @@ export default function FeatureModal({ isOpen, onClose, feature, accentColor = '
                             '--accent': accentColor
                         }}
                         onClick={e => e.stopPropagation()}
+                        data-lenis-prevent
                     >
                         <button className="feature-modal__close" onClick={onClose}>×</button>
 

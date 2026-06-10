@@ -163,7 +163,7 @@ const pricingPlans = [
     {
         name: 'Landing Page',
         description: 'Perfecta para campañas y lanzamientos',
-        price: '800',
+        price: '560',
         features: [
             'Diseño personalizado',
             'Hasta 5 secciones',
@@ -173,12 +173,12 @@ const pricingPlans = [
             '1 revisión incluida'
         ],
         cta: 'Comenzar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Landing Page* ($800) para mi próximo proyecto web.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Me interesa el plan *Landing Page* ($560) para mi próximo proyecto web.'
     },
     {
         name: 'Sitio Web Pro',
         description: 'Tu presencia digital completa',
-        price: '2,500',
+        price: '1,750',
         featured: true,
         features: [
             'Hasta 10 páginas',
@@ -189,12 +189,12 @@ const pricingPlans = [
             'Soporte 3 meses'
         ],
         cta: 'Más Popular',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Sitio Web Pro* ($2,500) para una presencia digital completa.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Quiero el plan *Sitio Web Pro* ($1,750) para una presencia digital completa.'
     },
     {
         name: 'E-commerce',
         description: 'Vende online sin límites',
-        price: '4,500',
+        price: '3,150',
         features: [
             'Tienda completa',
             'Pasarela de pagos',
@@ -204,7 +204,7 @@ const pricingPlans = [
             'Soporte 6 meses'
         ],
         cta: 'Cotizar',
-        whatsappMessage: '¡Hola AltoVisual! 👋 Necesito información sobre el plan *E-commerce* ($4,500) para mi tienda online.'
+        whatsappMessage: '¡Hola AltoVisual! 👋 Necesito información sobre el plan *E-commerce* ($3,150) para mi tienda online.'
     }
 ]
 

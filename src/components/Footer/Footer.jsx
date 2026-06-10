@@ -90,8 +90,8 @@ export default function Footer() {
                         <h4 className="footer__title">Contacto</h4>
                         <ul className="footer__list">
                             <li>
-                                <a href="mailto:hola@altovisual.studio" className="footer__link">
-                                    hola@altovisual.studio
+                                <a href="mailto:altovisual.ba@gmail.com" className="footer__link">
+                                    altovisual.ba@gmail.com
                                 </a>
                             </li>
                             <li>

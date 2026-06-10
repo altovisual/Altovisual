@@ -69,15 +69,15 @@ const services = [
     },
     {
         id: 'vfx',
-        title: 'Video & VFX',
-        description: 'Producción audiovisual, motion graphics y efectos visuales de impacto.',
+        title: 'Video, VFX & IA',
+        description: 'Producción audiovisual, motion graphics, efectos visuales y videos publicitarios con IA.',
         icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <polygon points="5,3 19,12 5,21 5,3" />
                 <circle cx="12" cy="12" r="10" strokeDasharray="4,2" />
             </svg>
         ),
-        features: ['Motion Graphics', 'VFX', 'Edición', 'Animación 3D'],
+        features: ['Motion Graphics', 'VFX', 'Videos con IA', 'Animación 3D'],
         accent: '#f97316',
         size: 'large',
         path: '/servicios/vfx'

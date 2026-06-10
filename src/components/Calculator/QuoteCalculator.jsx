@@ -33,12 +33,12 @@ const services = [
             </svg>
         ),
         subServices: [
-            { id: 'brand', label: 'Identidad de Marca', base: 400, desc: 'Naming, Logo, Paleta y Tipografía core.' },
-            { id: 'uiux', label: 'UI/UX Design', base: 600, desc: 'Prototipos y diseño de interfaces de alta fidelidad.' },
-            { id: 'print', label: 'Material Impreso', base: 250, desc: 'Brochures, Tarjetas y Papelería corporativa.' },
-            { id: 'digital', label: 'Diseño Digital', base: 200, desc: 'Banners, RRSS y Ads optimizados.' },
-            { id: 'guidelines', label: 'Brand Guidelines', base: 450, desc: 'Manual de marca completo para todo nivel.' },
-            { id: 'consulting', label: 'Consultoría Visual', base: 300, desc: 'Auditoría y estrategia de comunicación visual.' },
+            { id: 'brand', label: 'Identidad de Marca', base: 280, desc: 'Naming, Logo, Paleta y Tipografía core.' },
+            { id: 'uiux', label: 'UI/UX Design', base: 420, desc: 'Prototipos y diseño de interfaces de alta fidelidad.' },
+            { id: 'print', label: 'Material Impreso', base: 175, desc: 'Brochures, Tarjetas y Papelería corporativa.' },
+            { id: 'digital', label: 'Diseño Digital', base: 140, desc: 'Banners, RRSS y Ads optimizados.' },
+            { id: 'guidelines', label: 'Brand Guidelines', base: 315, desc: 'Manual de marca completo para todo nivel.' },
+            { id: 'consulting', label: 'Consultoría Visual', base: 210, desc: 'Auditoría y estrategia de comunicación visual.' },
             { id: 'custom', label: 'Otro / Personalizado', base: 0, isCustom: true, desc: 'Cuéntanos tu idea y la hacemos realidad.' }
         ]
     },
@@ -53,10 +53,10 @@ const services = [
             </svg>
         ),
         subServices: [
-            { id: 'landing', label: 'Landing Page', base: 800, desc: 'Página única enfocada 100% en la conversión.' },
-            { id: 'ecommerce', label: 'E-commerce', base: 1800, desc: 'Tienda online completa con pasarela de pagos.' },
-            { id: 'web-app', label: 'Aplicación Web', base: 2500, desc: 'Software en la nube con funciones a medida.' },
-            { id: 'cms', label: 'CMS Custom', base: 1200, desc: 'Gestor de contenido intuitivo para tu equipo.' },
+            { id: 'landing', label: 'Landing Page', base: 560, desc: 'Página única enfocada 100% en la conversión.' },
+            { id: 'ecommerce', label: 'E-commerce', base: 1260, desc: 'Tienda online completa con pasarela de pagos.' },
+            { id: 'web-app', label: 'Aplicación Web', base: 1750, desc: 'Software en la nube con funciones a medida.' },
+            { id: 'cms', label: 'CMS Custom', base: 840, desc: 'Gestor de contenido intuitivo para tu equipo.' },
             { id: 'custom', label: 'Otro / Personalizado', base: 0, isCustom: true, desc: 'Necesidades web específicas para tu negocio.' }
         ]
     },
@@ -71,16 +71,16 @@ const services = [
             </svg>
         ),
         subServices: [
-            { id: 'saas', label: 'SaaS / MicroSaaS', base: 5000, desc: 'Producto de software escalable basado en suscripción.' },
-            { id: 'admin-panel', label: 'Panel Admin', base: 3500, desc: 'Sistema centralizado para control de operaciones.' },
-            { id: 'api-inv', label: 'Integraciones API', base: 1500, desc: 'Conexión entre sistemas y flujo de datos.' },
-            { id: 'crm-auto', label: 'Automatización CRM', base: 2000, desc: 'Optimización de relaciones y ventas digitales.' },
+            { id: 'saas', label: 'SaaS / MicroSaaS', base: 3500, desc: 'Producto de software escalable basado en suscripción.' },
+            { id: 'admin-panel', label: 'Panel Admin', base: 2450, desc: 'Sistema centralizado para control de operaciones.' },
+            { id: 'api-inv', label: 'Integraciones API', base: 1050, desc: 'Conexión entre sistemas y flujo de datos.' },
+            { id: 'crm-auto', label: 'Automatización CRM', base: 1400, desc: 'Optimización de relaciones y ventas digitales.' },
             { id: 'custom', label: 'Otro / Personalizado', base: 0, isCustom: true, desc: 'Arquitectura de software de alto nivel.' }
         ]
     },
     {
         id: 'vfx',
-        label: 'Video & VFX',
+        label: 'Video, VFX & IA',
         icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polygon points="5,3 19,12 5,21 5,3" />
@@ -88,10 +88,10 @@ const services = [
             </svg>
         ),
         subServices: [
-            { id: 'motion', label: 'Motion Graphics', base: 1000, desc: 'Animaciones vectoriales 2D para comerciales.' },
-            { id: 'vfx-special', label: 'Especial VFX', base: 1500, desc: 'Efectos visuales cinematográficos e integración.' },
-            { id: 'video-edit', label: 'Edición Pro', base: 600, desc: 'Corte, color y post-producción profesional.' },
-            { id: 'anim-3d', label: 'Animación 3D', base: 2500, desc: 'Modelado y animación 3D de alta complejidad.' },
+            { id: 'motion', label: 'Motion Graphics', base: 700, desc: 'Animaciones vectoriales 2D para comerciales.' },
+            { id: 'vfx-special', label: 'Especial VFX', base: 1050, desc: 'Efectos visuales cinematográficos e integración.' },
+            { id: 'video-ia', label: 'Spot Publicitario IA', base: 840, desc: 'Videos comerciales de alta conversión optimizados con IA.' },
+            { id: 'anim-3d', label: 'Animación 3D', base: 1750, desc: 'Modelado y animación 3D de alta complejidad.' },
             { id: 'custom', label: 'Otro / Personalizado', base: 0, isCustom: true, desc: 'Producción audiovisual de impacto global.' }
         ]
     },
@@ -104,9 +104,9 @@ const services = [
             </svg>
         ),
         subServices: [
-            { id: 'chatbot', label: 'Chatbots IA', base: 1200, desc: 'Atención al cliente 24/7 con IA personalizada.' },
-            { id: 'flows', label: 'Automatización Workflows', base: 1000, desc: 'Elimina tareas repetitivas en tu flujo diario.' },
-            { id: 'voice-agents', label: 'Agentes de Voz', base: 2000, desc: 'IA que habla y entiende como un experto humano.' },
+            { id: 'chatbot', label: 'Chatbots IA', base: 840, desc: 'Atención al cliente 24/7 con IA personalizada.' },
+            { id: 'flows', label: 'Automatización Workflows', base: 700, desc: 'Elimina tareas repetitivas en tu flujo diario.' },
+            { id: 'voice-agents', label: 'Agentes de Voz', base: 1400, desc: 'IA que habla y entiende como un experto humano.' },
             { id: 'custom', label: 'Otro / Personalizado', base: 0, isCustom: true, desc: 'Soluciones de inteligencia artificial avanzada.' }
         ]
     }
@@ -243,11 +243,11 @@ const serviceFeatures = {
         advanced: ['Simulaciones Complejas', 'Integración CGI Pro', 'Digital Matte Painting', 'Efectos Dinámicos'],
         enterprise: ['Movie Quality VFX', 'Supervisión en Set', 'Render Farm Access', 'Finish Pro']
     },
-    'video-edit': {
-        simple: ['Corte y Ritmo', 'Corrección de Color', 'Títulos Básicos', 'Música Stock'],
-        medium: ['Narrativa Visual', 'Audio Mixing Pro', 'Color Grading Pro', 'Multi-cam Edit'],
-        advanced: ['Edición Documental', 'Efectos de Sonido', 'Dynamic Graphics', 'Masterización'],
-        enterprise: ['Producción de Spot', 'Director Cut Style', 'Derechos Música', 'High-End Master']
+    'video-ia': {
+        simple: ['1 Spot de 30s', 'Guion redactado con IA', 'Locución IA estándar', 'Subtítulos dinámicos'],
+        medium: ['2 Spots de 30s', 'Guion y locución IA Pro', 'Presentador / Avatar IA', 'Formatos Ads (9:16 y 16:9)'],
+        advanced: ['Campaña de 4 Ads', 'Avatares Hiperrealistas', 'Efectos visuales con IA', 'Hooks optimizados para CTR'],
+        enterprise: ['Estrategia Ads Completa', 'Clonación de Voz de Marca', 'Producción IA Ilimitada', 'Asesoría de Conversión VIP']
     },
     'anim-3d': {
         simple: ['Modelado de Producto', 'Texturizado Básico', 'Iluminación Studio', 'Render Still'],
