@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import './Contact.css'
 
 export default function Contact() {
-    const [status, setStatus] = useState('idle') // idle, submitting, success
+    const [status, setStatus] = useState('idle') // idle, submitting, success, error
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -14,14 +14,35 @@ export default function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setStatus('submitting')
-        // Simular envío
-        await new Promise(resolve => setTimeout(resolve, 2000))
-        setStatus('success')
+        try {
+            const res = await fetch('https://formspree.io/f/mlgklylq', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: form.name,
+                    email: form.email,
+                    subject: form.subject,
+                    message: form.message
+                })
+            })
+            if (res.ok) {
+                setStatus('success')
+                setForm({ name: '', email: '', subject: '', message: '' })
+            } else {
+                setStatus('error')
+            }
+        } catch {
+            setStatus('error')
+        }
     }
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
+
 
     if (status === 'success') {
         return (
@@ -162,6 +183,17 @@ export default function Contact() {
                                     'Agendar mi consultoría ahora'
                                 )}
                             </button>
+
+                            {status === 'error' && (
+                                <p style={{
+                                    marginTop: '12px',
+                                    color: '#f97316',
+                                    fontSize: '0.85rem',
+                                    textAlign: 'center'
+                                }}>
+                                    Hubo un error al enviar. Intentá de nuevo o escribinos directamente a <strong>altovisual.ba@gmail.com</strong>
+                                </p>
+                            )}
                         </form>
                     </motion.div>
                 </div>
