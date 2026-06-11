@@ -200,6 +200,25 @@ export default function Portfolio() {
         }
     }, [filter])
 
+    // Bloquear scroll del fondo cuando el modal está abierto
+    useEffect(() => {
+        const isOpen = selectedProject !== null;
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            window.locomotiveScroll?.stop();
+        } else {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            window.locomotiveScroll?.start();
+        }
+        return () => {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            window.locomotiveScroll?.start();
+        };
+    }, [selectedProject]);
+
     return (
         <section id="portafolio" className="portfolio section">
             <div className="container">

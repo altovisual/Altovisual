@@ -108,8 +108,8 @@
 .service-hero__feature {
     padding: var(--space-sm) var(--space-md);
     font-size: var(--text-sm);
-    border: 1px solid;
-    border-radius: var(--radius-xl);
+    border: none;
+    border-radius: 5px;
 }
 
 .service-hero__cta-primary .inner-content {
@@ -186,15 +186,15 @@
     position: absolute;
     top: var(--space-lg);
     right: var(--space-lg);
-    padding: var(--space-2xs) var(--space-sm);
+    padding: 4px 10px;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     border: 1px solid;
-    border-radius: var(--radius-xl);
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
+    border-radius: 5px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 10;
 }
 

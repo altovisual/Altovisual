@@ -374,15 +374,21 @@ export default function QuoteCalculator() {
     }, [navbarHeight])
 
 
-    // Bloquear scroll del body cuando el modal está abierto (compatible con Lenis)
+    // Bloquear scroll del body cuando el modal está abierto (compatible con Lenis/LocomotiveScroll)
     useEffect(() => {
         if (isModalOpen) {
             document.body.style.overflow = 'hidden'
+            document.documentElement.style.overflow = 'hidden'
+            window.locomotiveScroll?.stop()
         } else {
             document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+            window.locomotiveScroll?.start()
         }
         return () => {
             document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+            window.locomotiveScroll?.start()
         }
     }, [isModalOpen])
 

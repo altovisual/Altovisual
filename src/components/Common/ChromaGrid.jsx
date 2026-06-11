@@ -128,6 +128,25 @@ export const ChromaGrid = ({
         setSelectedItem(null);
     };
 
+    // Bloquear scroll del fondo cuando el modal está abierto
+    useEffect(() => {
+        const isOpen = selectedItem !== null;
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            window.locomotiveScroll?.stop();
+        } else {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            window.locomotiveScroll?.start();
+        }
+        return () => {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            window.locomotiveScroll?.start();
+        };
+    }, [selectedItem]);
+
     const handleCardMove = e => {
         const card = e.currentTarget;
         const rect = card.getBoundingClientRect();

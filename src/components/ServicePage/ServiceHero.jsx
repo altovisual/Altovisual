@@ -51,15 +51,7 @@ export default function ServiceHero({
 
             {/* Content */}
             <div className="service-hero__content container">
-                <motion.div
-                    className="service-hero__icon"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    style={{ '--accent': accentColor }}
-                >
-                    {icon}
-                </motion.div>
+
 
                 <motion.span
                     className="service-hero__subtitle"
@@ -106,8 +98,7 @@ export default function ServiceHero({
                             key={feature}
                             className="service-hero__feature"
                             style={{
-                                background: `${accentColor}15`,
-                                borderColor: `${accentColor}30`
+                                background: `${accentColor}15`
                             }}
                         >
                             {feature}

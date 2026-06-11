@@ -51,14 +51,6 @@ export default function Hero() {
                 className="hero__content"
                 style={{ opacity, y, scale }}
             >
-                <motion.p
-                    className="hero__tagline"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    Estudio Creativo Integral
-                </motion.p>
 
                 <motion.h1
                     className="hero__title"
@@ -83,8 +75,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
                 >
-                    Diseño gráfico, desarrollo web & software, y producción audiovisual con VFX.
-                    Creamos soluciones de alto impacto para marcas que quieren destacar.
+                    Diseño, desarrollo y producción VFX. Creamos soluciones de alto impacto para marcas que buscan destacar.
                 </motion.p>
 
                 <motion.div

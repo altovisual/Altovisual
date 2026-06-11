@@ -348,38 +348,42 @@
 }
 
 .pc-details {
-    width: 100%;
     position: absolute;
-    top: 3em;
+    top: 24px;
+    left: 24px;
+    right: 24px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    z-index: 10;
 }
 
 .pc-details h3 {
-    font-weight: 600;
+    font-weight: 700;
     margin: 0;
-    font-size: min(5svh, 3em);
-    margin: 0;
-    background-image: linear-gradient(to bottom, #fff, #6f6fbe);
-    background-size: 1em 1.5em;
+    font-size: 1.25rem;
+    background-image: linear-gradient(to bottom, #ffffff, #c0c0c0);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+    line-height: 1.2;
 }
 
 .pc-details p {
     font-weight: 600;
-    position: relative;
-    top: -12px;
-    white-space: nowrap;
-    font-size: 16px;
-    margin: 0 auto;
-    width: min-content;
-    background-image: linear-gradient(to bottom, #fff, #4a4ac0);
-    background-size: 1em 1.5em;
+    position: static;
+    top: auto;
+    white-space: normal;
+    font-size: 0.75rem;
+    margin: 4px 0 0 0;
+    width: auto;
+    background-image: linear-gradient(to bottom, #ffffff, var(--behind-glow-color, #a0a0a0));
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 @keyframes glow-bg {
@@ -415,16 +419,19 @@
     }
 
     .pc-details {
-        top: 2em;
+        top: 20px;
+        left: 20px;
+        right: 20px;
     }
 
     .pc-details h3 {
-        font-size: min(3.5svh, 2em);
+        font-size: 1.1rem;
     }
 
     .pc-details p {
-        font-size: 13px;
-        top: -8px;
+        font-size: 0.7rem;
+        top: auto;
+        position: static;
     }
 
     .pc-user-info {
@@ -462,16 +469,19 @@
     }
 
     .pc-details {
-        top: 1.5em;
+        top: 16px;
+        left: 16px;
+        right: 16px;
     }
 
     .pc-details h3 {
-        font-size: min(3.5svh, 2em);
+        font-size: 1rem;
     }
 
     .pc-details p {
-        font-size: 12px;
-        top: -8px;
+        font-size: 0.65rem;
+        top: auto;
+        position: static;
     }
 
     .pc-user-info {
@@ -510,11 +520,11 @@
     }
 
     .pc-details h3 {
-        font-size: min(3svh, 1.5em);
+        font-size: 0.9rem;
     }
 
     .pc-details p {
-        font-size: 11px;
+        font-size: 0.6rem;
     }
 
     .pc-user-info {

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import ShinyButton from '../Common/ShinyButton'
@@ -6,6 +6,24 @@ import './FeatureModal.css'
 
 export default function FeatureModal({ isOpen, onClose, feature, accentColor = '#00f2fe' }) {
     const modalRef = useRef(null)
+
+    // Bloquear scroll del fondo cuando el modal está abierto
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'
+            document.documentElement.style.overflow = 'hidden'
+            window.locomotiveScroll?.stop()
+        } else {
+            document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+            window.locomotiveScroll?.start()
+        }
+        return () => {
+            document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+            window.locomotiveScroll?.start()
+        }
+    }, [isOpen])
 
     // Lógica 3D Tilt
     const x = useMotionValue(0)

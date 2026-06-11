@@ -108,18 +108,18 @@ export default function GallerySection() {
 
   const getResponsiveConfig = () => {
     if (windowWidth < 480) {
-      return { width: 310, height: 280, cardDistance: 25, verticalDistance: 30, skewAmount: 2 };
+      return { width: 325, height: 295, cardDistance: 20, verticalDistance: 25, skewAmount: 2 };
     }
     if (windowWidth < 576) {
-      return { width: 340, height: 280, cardDistance: 30, verticalDistance: 35, skewAmount: 3 };
+      return { width: 360, height: 310, cardDistance: 25, verticalDistance: 30, skewAmount: 3 };
     }
     if (windowWidth < 768) {
-      return { width: 380, height: 300, cardDistance: 45, verticalDistance: 50, skewAmount: 4 };
+      return { width: 420, height: 330, cardDistance: 35, verticalDistance: 40, skewAmount: 4 };
     }
     if (windowWidth < 991) {
-      return { width: 440, height: 320, cardDistance: 60, verticalDistance: 70, skewAmount: 5 };
+      return { width: 480, height: 350, cardDistance: 45, verticalDistance: 50, skewAmount: 5 };
     }
-    return { width: 480, height: 340, cardDistance: 85, verticalDistance: 95, skewAmount: 6 };
+    return { width: 550, height: 380, cardDistance: 65, verticalDistance: 75, skewAmount: 6 };
   };
 
   const config = getResponsiveConfig();
@@ -132,14 +132,6 @@ export default function GallerySection() {
           
           {/* Columna Izquierda: Texto Descriptivo */}
           <div className="gallery-text" style={{ zIndex: 2 }}>
-            <span className="section-label" style={{
-                textTransform: 'uppercase',
-                letterSpacing: '0.2em',
-                fontSize: 'var(--text-xs)',
-                color: 'var(--accent-start)',
-                display: 'block',
-                marginBottom: 'var(--space-md)'
-            }}>Tecnologías & Frameworks</span>
             
             <h2 className="section-title" style={{ fontSize: 'var(--text-3xl)', marginBottom: 'var(--space-lg)', lineHeight: '1.2' }}>
                 Stack de <br />
@@ -159,13 +151,13 @@ export default function GallerySection() {
               maxWidth: '460px',
               margin: 0
             }}>
-              Desarrollamos soluciones digitales robustas y de alto impacto utilizando tecnologías modernas para garantizar un rendimiento sobresaliente, escalabilidad y experiencias visuales únicas.
+              Creamos soluciones de alto impacto, rendimiento sobresaliente y diseño excepcional con tecnologías modernas.
             </p>
           </div>
 
           {/* Columna Derecha: Contenedor de la pila de cartas */}
           <div className="swap-container-wrapper" style={{ 
-            height: windowWidth < 576 ? '380px' : windowWidth < 991 ? '460px' : '520px', 
+            height: windowWidth < 576 ? '380px' : windowWidth < 991 ? '460px' : '580px', 
             width: '100%', 
             position: 'relative', 
             display: 'flex', 

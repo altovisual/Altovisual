@@ -39,20 +39,6 @@
     text-align: center;
 }
 
-.hero__tagline {
-    display: inline-block;
-    padding: var(--space-xs) var(--space-md);
-    margin-bottom: var(--space-lg);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-start);
-    background: rgba(0, 242, 254, 0.1);
-    border: 1px solid rgba(0, 242, 254, 0.2);
-    border-radius: var(--radius-xl);
-}
-
 .hero__title {
     font-size: clamp(2.5rem, 6vw, 5rem);
     font-weight: 700;

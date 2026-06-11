@@ -209,7 +209,7 @@ a {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border: none;
-  border-radius: 100px;
+  border-radius: 5px;
   cursor: pointer;
   position: relative;
   overflow: hidden;

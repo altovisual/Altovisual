@@ -134,9 +134,11 @@ export default function App() {
                 normalizeWheel: true,
             }
         });
+        window.locomotiveScroll = locomotiveScroll;
 
         return () => {
             locomotiveScroll.destroy();
+            delete window.locomotiveScroll;
         };
     }, []);
 

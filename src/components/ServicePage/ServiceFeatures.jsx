@@ -67,7 +67,14 @@ export default function ServiceFeatures({
                                     style={{ cursor: 'pointer' }}
                                 >
                                     {/* Badge Superior */}
-                                    <div className="service-feature__badge" style={{ borderColor: `${accentColor}40` }}>
+                                    <div
+                                        className="service-feature__badge"
+                                        style={{
+                                            borderColor: `${accentColor}30`,
+                                            color: accentColor,
+                                            background: `${accentColor}10`
+                                        }}
+                                    >
                                         {feature.tag || "Feature"}
                                     </div>
 

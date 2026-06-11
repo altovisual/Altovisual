@@ -192,9 +192,11 @@
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(12px);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: var(--space-lg);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     animation: fadeIn 0.3s ease;
 }
 
@@ -206,25 +208,36 @@
     border-radius: var(--radius-xl);
     border: 1px solid var(--glass-border);
     overflow: hidden;
+    margin: auto;
     animation: scaleIn 0.4s var(--transition-bounce);
 }
 
 .chroma-modal-close {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: transparent;
-    border: none;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: var(--text-muted);
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    line-height: 1;
-    z-index: 10;
-    transition: color var(--transition-fast);
+    z-index: 50;
+    transition: all var(--transition-fast);
 }
 
 .chroma-modal-close:hover {
     color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
 }
 
 .chroma-modal-body {
@@ -246,12 +259,12 @@
 .chroma-modal-profile {
     position: relative;
     height: 100%;
-    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-md);
-    background: rgba(0, 0, 0, 0.2);
+    padding: var(--space-xl);
+    background: rgba(0, 0, 0, 0.15);
+    border-right: 1px solid var(--glass-border);
 }
 
 .chroma-modal-profile .pc-card-wrapper {
@@ -259,25 +272,47 @@
     max-width: 320px;
 }
 
+/* Force pc-card inside modal to scale with width instead of viewport height */
+.chroma-modal-profile .pc-card {
+    height: auto !important;
+    width: 100% !important;
+    aspect-ratio: 0.718 !important;
+    max-height: 480px !important;
+}
+
 .chroma-modal-info {
     padding: var(--space-xl);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: left;
+    align-items: flex-start;
 }
 
 .modal-label {
     font-family: var(--font-display);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     font-weight: 700;
     margin-bottom: var(--space-sm);
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    width: fit-content;
 }
 
 .modal-title {
     font-size: var(--text-4xl);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     margin-bottom: var(--space-xs);
+    background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .modal-handle {
@@ -287,10 +322,11 @@
 }
 
 .modal-divider {
-    width: 60px;
+    width: 50px;
     height: 3px;
     background: var(--accent-gradient);
     margin-bottom: var(--space-lg);
+    border-radius: 2px;
 }
 
 .modal-bio {
@@ -298,18 +334,19 @@
     font-size: var(--text-base);
     line-height: 1.8;
     margin-bottom: var(--space-xl);
+    max-width: 45ch;
 }
 
 .modal-actions {
     display: flex;
     gap: var(--space-md);
+    width: 100%;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -320,7 +357,6 @@
         opacity: 0;
         transform: scale(0.95) translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -329,36 +365,53 @@
 
 /* Mobile Modal */
 @media (max-width: 768px) {
+    .chroma-modal-overlay {
+        padding: var(--space-md);
+    }
+
     .chroma-modal-content {
-        max-height: 95vh;
-        width: 95%;
-        overflow-y: auto;
+        max-height: none;
+        width: 100%;
+        max-width: 460px;
+        margin: auto;
     }
 
     .chroma-modal-body {
         grid-template-columns: 1fr;
-    }
-
-    .chroma-modal-info {
-        padding: var(--space-lg);
-        text-align: center;
-        align-items: center;
+        min-height: unset;
     }
 
     .chroma-modal-profile {
-        height: auto;
-        padding: var(--space-lg) var(--space-md);
-        min-height: unset;
-        background: rgba(0, 0, 0, 0.4);
+        padding: 3rem 1.5rem 2rem;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        background: rgba(0, 0, 0, 0.3);
     }
 
     .chroma-modal-profile .pc-card-wrapper {
         max-width: 240px;
-        /* Tarjeta más pequeña en móvil */
+        margin: 0 auto;
+    }
+
+    .chroma-modal-profile .pc-card {
+        height: auto !important;
+        width: 100% !important;
+        aspect-ratio: 0.718 !important;
+        max-height: 340px !important;
+    }
+
+    .chroma-modal-info {
+        padding: var(--space-xl) var(--space-lg);
+        text-align: center;
+        align-items: center;
+    }
+
+    .modal-label {
+        margin: 0 auto var(--space-sm) !important;
     }
 
     .modal-title {
-        font-size: var(--text-2xl);
+        font-size: var(--text-3xl);
         margin-top: var(--space-xs);
     }
 
@@ -373,9 +426,20 @@
     }
 
     .chroma-modal-close {
-        top: 0.75rem;
+        top: 1rem;
         right: 1rem;
-        font-size: 2rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1.25rem;
+    }
+    
+    .modal-actions {
+        justify-content: center;
+    }
+    
+    .modal-actions .btn {
+        width: 100%;
+        max-width: 280px;
     }
 }
 
